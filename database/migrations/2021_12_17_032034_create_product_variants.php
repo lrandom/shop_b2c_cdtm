@@ -17,7 +17,7 @@ class CreateProductVariants extends Migration
             $table->id();
             $table->bigInteger('product_id');
             $table->bigInteger('variant_id');
-            $table->string('variant_name');
+            $table->string('variant_name')->nullable();
             $table->timestamps();
         });
     }

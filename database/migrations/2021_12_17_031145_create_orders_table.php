@@ -19,10 +19,10 @@ class CreateOrdersTable extends Migration
             $table->double('tax');
             $table->double('total');
             $table->bigInteger('user_id')->unsigned();
-            $table->string('full_name');
-            $table->string('address');
-            $table->string('phone', 10);
-            $table->longText('note');
+            $table->string('full_name')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone', 10)->nullable();
+            $table->longText('note')->nullable();
             $table->timestamps();
         });
     }

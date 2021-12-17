@@ -19,8 +19,8 @@ class CreateOrderDetailsTable extends Migration
             $table->double('price');
             $table->bigInteger('product_id');
             $table->integer('quantity');
-            $table->string('variant_info');
-            $table->string('name');
+            $table->string('variant_info')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
