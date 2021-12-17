@@ -17,4 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ve-chung-toi', [\App\Http\Controllers\HomeController::class,'about']);
+Route::get('/ve-chung-toi', [\App\Http\Controllers\HomeController::class, 'about']);
+Route::get('/be-layout', function () {
+    return view('be.layout');
+});
