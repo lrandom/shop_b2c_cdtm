@@ -262,6 +262,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="content">
             <div class="container-fluid">
 
+                @if(\Illuminate\Support\Facades\Session::has('success'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                        {{\Illuminate\Support\Facades\Session::get('success')}}
+                    </div>
+                @endif
+
+                @if(\Illuminate\Support\Facades\Session::has('error'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                        {{\Illuminate\Support\Facades\Session::get('error')}}
+                    </div>
+                @endif
+
+
                 @section('main-content')
                 @show
 

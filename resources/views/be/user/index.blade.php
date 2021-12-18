@@ -1,0 +1,2 @@
+@extends('be.layout')
+
