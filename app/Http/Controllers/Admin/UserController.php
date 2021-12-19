@@ -13,7 +13,8 @@ class UserController extends Controller implements ICrud
     public function index()
     {
         // TODO: Implement index() method.
-        return view('be.user.index');
+        $list = User::orderBy('id', 'desc')->paginate(10);
+        return view('be.user.index', compact('list'));
     }
 
     public function add()
@@ -37,30 +38,56 @@ class UserController extends Controller implements ICrud
                 'name' => $email,
                 'password' => Hash::make($password)
             ]);
-        }catch (\Exception $exception){
-            return redirect()->back()->with('error', "Thêm thất bại");
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', "Add failed");
         }
 
 
         //chuyển hướng về trang  danh sách
-        return redirect()->route('admin.user.list')->with('success', 'Thêm mới thành công');
+        return redirect()->route('admin.user.list')->with('success', 'Add successfully');
     }
 
 
-    public function edit()
+    public function edit($id)
     {
         // TODO: Implement edit() method.
+        $user = User::find($id);//lấy ra user có id là $id truyền vào
+        return view('be.user.edit', compact('user'));
     }
 
-    public function doEdit()
+    public function doEdit($id, Request $request)
     {
         // TODO: Implement doEdit() method.
+        $email = $request->email;
+        $fullName = $request->full_name;
+        $phone = $request->phone;
+        $password = $request->password;
+        try {
+            User::where('id', $id)->update([
+                'email' => $email,
+                'full_name' => $fullName,
+                'phone' => $phone,
+                'name' => $email,
+                'password' => Hash::make($password)
+            ]);
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', "Update failed");
+        }
+        //chuyển hướng về trang  danh sách
+        return redirect()->route('admin.user.list')->with('success', 'Update successfully');
     }
 
 
-    public function delete()
+    public function delete($id)
     {
         // TODO: Implement delete() method.
+        try {
+            $user = User::find($id);
+            $user->delete();
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', "Delete failed");
+        }
+        return redirect()->back()->with('success', "Delete successfully");
     }
 
 }

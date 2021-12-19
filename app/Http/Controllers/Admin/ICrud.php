@@ -13,11 +13,11 @@ interface ICrud
 
     public function add();
 
-    public function edit();
+    public function edit($id);
 
-    public function delete();
+    public function delete($id);
 
     public function doAdd(Request $request);
 
-    public function doEdit();
+    public function doEdit($id, Request $request);
 }
