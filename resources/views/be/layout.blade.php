@@ -201,23 +201,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          with font-awesome or any other icon font library -->
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <i class="nav-icon fas fa-user-alt"></i>
                             <p>
-                                Starter Pages
+                                User
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <a href="{{route('admin.user.list')}}" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Active Page</p>
+                                    <p>List User</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('admin.user.add')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Inactive Page</p>
+                                    <p>Add User</p>
                                 </a>
                             </li>
                         </ul>
@@ -245,13 +245,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Starter Page</h1>
+                        <h1 class="m-0">Admin</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Starter Page</li>
-                        </ol>
+                        @section('bread-crumb')
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                        @show
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->

@@ -45,3 +45,10 @@
 
     </div>
 @endsection
+@section('bread-crumb')
+    <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Admin</a></li>
+        <li class="breadcrumb-item"><a href="{{route('admin.user.list')}}">User</a></li>
+        <li class="breadcrumb-item active">Edit</li>
+    </ol>
+@endsection
