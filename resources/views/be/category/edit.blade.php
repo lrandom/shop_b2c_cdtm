@@ -8,12 +8,13 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form method="post" action="{{route('admin.category.doEdit',['id'=>$user->id])}}">
+                <form method="post" action="{{route('admin.category.doEdit',['id'=>$category->id])}}">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Enter name">
+                            <input type="text" name="name" class="form-control" value="{{$category->name}}"
+                                   placeholder="Enter name">
                         </div>
                     </div>
                     <!-- /.card-body -->
