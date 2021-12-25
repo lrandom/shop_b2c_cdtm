@@ -244,5 +244,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('be/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('be/adminlte/js/adminlte.min.js')}}"></script>
+
+@section('script')
+@show
 </body>
 </html>

@@ -11,6 +11,21 @@
                 <form method="post" action="{{route('admin.product.doAdd')}}">
                     @csrf
                     <div class="card-body">
+                        <div class="preview-images">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Images</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="images" multiple class="images-input custom-file-input"
+                                           id="exampleInputFile">
+                                    <label class="custom-file-label" for="exampleInputFile">Choose Image</label>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                             <label>Name</label>
                             <input type="text" name="name" class="form-control" placeholder="Enter name">
@@ -19,6 +34,7 @@
                         <div class="form-group">
                             <label>Category</label>
                             <select name="category_id" class="form-control">
+                                <option value="0">All</option>
                                 @foreach($categories as $cat)
                                     <option value="{{$cat->id}}">{{$cat->name}}</option>
                                 @endforeach
@@ -83,12 +99,48 @@
         </div>
 
     </div>
+
 @endsection
 
 @section('bread-crumb')
     <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="#">Admin</a></li>
         <li class="breadcrumb-item"><a href="{{route('admin.product.list')}}">Product</a></li>
-        <li class="breadcrumb-item active">Add</li>
+        <li class="breadcrumb-item active"Add</li>
     </ol>
+@endsection
+
+@section('script')
+    <style>
+        .preview-images {
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px
+        }
+
+        .preview-images img {
+            width: 150px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        const imagesPreview = function (input, placeToInsertImagePreview) {
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $('.images-input').on('change', function () {
+            imagesPreview(this, '.preview-images');
+        });
+    </script>
 @endsection
