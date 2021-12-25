@@ -13,20 +13,21 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <select name="category_id" class="form-control">
-                                <option></option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Category</label>
                             <input type="text" name="name" class="form-control" placeholder="Enter name">
                         </div>
 
                         <div class="form-group">
-                            <label>Name</label>
-                            <textarea name="content" class="form-control" placeholder="Enter Content">
-                            </textarea>
+                            <label>Category</label>
+                            <select name="category_id" class="form-control">
+                                @foreach($categories as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Content</label>
+                            <textarea name="content" class="form-control" placeholder="Enter Content"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -68,8 +69,7 @@
 
                         <div class="form-group">
                             <label>Short Description</label>
-                            <input type="text" name="short_description" class="form-control"
-                                   placeholder="Enter Short Description">
+                            <textarea name="short_description" class="form-control"></textarea>
                         </div>
 
                     </div>

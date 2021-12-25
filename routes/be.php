@@ -33,16 +33,16 @@ Route::prefix('/admin')->group(function () {
     });
 
     Route::prefix('/product')->group(function () {
-        Route::get('/list', [\App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.product.list');
+        Route::get('/list', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('admin.product.list');
         Route::get('/add',
-            [\App\Http\Controllers\Admin\CategoriesController::class, 'add'])->name('admin.product.add');
+            [\App\Http\Controllers\Admin\ProductController::class, 'add'])->name('admin.product.add');
         Route::post('/do-add',
-            [\App\Http\Controllers\Admin\CategoriesController::class, 'doAdd'])->name('admin.product.doAdd');
-        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'edit'])
+            [\App\Http\Controllers\Admin\ProductController::class, 'doAdd'])->name('admin.product.doAdd');
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'edit'])
             ->name('admin.product.edit');
-        Route::post('/do-edit/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'doEdit'])
+        Route::post('/do-edit/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'doEdit'])
             ->name('admin.product.doEdit');
-        Route::get('/delete/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'delete'])
+        Route::get('/delete/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])
             ->name('admin.product.delete');
     });
 });

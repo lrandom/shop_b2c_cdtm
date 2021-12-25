@@ -19,7 +19,8 @@ class ProductController extends Controller implements ICrud
     public function add()
     {
         // TODO: Implement add() method.
-        return view('be.product.add');
+        $categories = \App\Models\Category::all();
+        return view('be.product.add',compact('categories'));
     }
 
     public function doAdd(Request $request)
