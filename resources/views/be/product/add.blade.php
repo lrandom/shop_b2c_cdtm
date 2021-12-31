@@ -106,7 +106,7 @@
     <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="#">Admin</a></li>
         <li class="breadcrumb-item"><a href="{{route('admin.product.list')}}">Product</a></li>
-        <li class="breadcrumb-item active"Add</li>
+        <li class="breadcrumb-item active">Add</li>
     </ol>
 @endsection
 
@@ -122,17 +122,51 @@
             width: 150px;
             height: 100px;
         }
+
+        .remove-img {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            border: none;
+            outline: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 999px;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            items-align: center;
+        }
     </style>
     <script>
+
+        let filesAmount = [];
+
+        function removeImage(i) {
+            const fileListArr = Array.from(filesAmount);
+            fileListArr.splice(i);
+            filesAmount = fileListArr;
+            $('.preview-images').find('.img-item').eq(i).remove();
+            $('.images-input').files = fileListArr;
+        }
+
         const imagesPreview = function (input, placeToInsertImagePreview) {
             if (input.files) {
-                var filesAmount = input.files.length;
-
-                for (i = 0; i < filesAmount; i++) {
-                    var reader = new FileReader();
+                filesAmount = input.files;
+                $('.preview-images').empty();
+                for (let i = 0; i < filesAmount.length; i++) {
+                    const reader = new FileReader();
 
                     reader.onload = function (event) {
-                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        const node = document.createElement('span');
+                        node.addEventListener('click', () => {
+                            removeImage(i);
+                        })
+                        node.style.position = 'relative';
+                        node.classList.add('img-item');
+                        node.innerHTML = `<img src="${event.target.result}" alt="Image" style="width:150px;height:100px;"><span class="remove-img">
+<div>x</div></span>`;
+                        $(placeToInsertImagePreview).append(node);
                     }
                     reader.readAsDataURL(input.files[i]);
                 }
@@ -142,5 +176,7 @@
         $('.images-input').on('change', function () {
             imagesPreview(this, '.preview-images');
         });
+
+
     </script>
 @endsection
