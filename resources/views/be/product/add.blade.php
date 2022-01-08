@@ -8,7 +8,9 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form method="post" action="{{route('admin.product.doAdd')}}">
+                <form method="post"
+                      enctype="multipart/form-data"
+                      action="{{route('admin.product.doAdd')}}">
                     @csrf
                     <div class="card-body">
                         <div class="preview-images">
@@ -18,7 +20,7 @@
                             <label for="exampleInputFile">Images</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" name="images" multiple class="images-input custom-file-input"
+                                    <input type="file" name="images[]" multiple class="images-input custom-file-input"
                                            id="exampleInputFile">
                                     <label class="custom-file-label" for="exampleInputFile">Choose Image</label>
                                 </div>

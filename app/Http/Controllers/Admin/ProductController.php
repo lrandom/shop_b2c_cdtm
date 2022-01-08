@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PHPUnit\Exception;
 
 class ProductController extends Controller implements ICrud
 {
@@ -38,9 +40,9 @@ class ProductController extends Controller implements ICrud
         $shortDescription = $request->short_description;
 
         try {
-            Product::create([
+            $product = Product::create([
                 'name' => $name,
-                'content' => $content,
+                'content' => htmlentities($content),
                 'price' => $price,
                 'brand_id' => $brandId,
                 'discount_amount' => 0,
@@ -51,6 +53,27 @@ class ProductController extends Controller implements ICrud
                 'short_description' => $shortDescription,
                 'category_id' => $categoryId
             ]);
+
+            //check if product has image
+            if ($request->hasFile('images')) {
+                $images = $request->file('images');
+                $i = 0;
+                foreach ($images as $image) {
+                    $newFileName = time() . $i . '.' . $image->getClientOriginalExtension();
+                    try {
+                        $image->storeAs('images/products',
+                            $newFileName, 'public');
+                        Image::create([
+                            'product_id' => $product->id,
+                            'path' => 'storage/images/products/' . $newFileName,
+                            'is_preview' => $i == 0 ? 1 : 0
+                        ]);
+                    } catch (Exception $exception) {
+                        dd($exception->getMessage());
+                    }
+                    $i++;
+                }
+            }
         } catch (\Exception $exception) {
             //dd($exception->getMessage());
             return redirect()->back()->with('error', "Add failed");
