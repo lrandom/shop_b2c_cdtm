@@ -20,22 +20,44 @@ class ProductController extends Controller implements ICrud
     {
         // TODO: Implement add() method.
         $categories = \App\Models\Category::all();
-        return view('be.product.add',compact('categories'));
+        return view('be.product.add', compact('categories'));
     }
 
     public function doAdd(Request $request)
     {
         // TODO: Implement doAdd() method.
         $name = $request->name;
+        $categoryId = $request->category_id;
+        $content = $request->input('txt-content');
+        $price = $request->price;
+        $brandId = $request->brand_id ?? 0;
+        $discountType = $request->discount_type;
+        $metaKeyword = $request->meta_keyword;
+        $metaContent = $request->meta_content;
+        $metaDescription = $request->meta_description;
+        $shortDescription = $request->short_description;
+
         try {
             Product::create([
                 'name' => $name,
+                'content' => $content,
+                'price' => $price,
+                'brand_id' => $brandId,
+                'discount_amount' => 0,
+                'discount_type' => $discountType,
+                'meta_keyword' => $metaKeyword,
+                'meta_description' => $metaDescription,
+                'meta_content' => $metaContent,
+                'short_description' => $shortDescription,
+                'category_id' => $categoryId
             ]);
         } catch (\Exception $exception) {
+            //dd($exception->getMessage());
             return redirect()->back()->with('error', "Add failed");
         }
         //chuyển hướng về trang  danh sách
-        return redirect()->route('admin.product.list')->with('success', 'Add successfully');
+        return redirect()->route('admin.product.list')
+            ->with('success', 'Add successfully');
     }
 
 

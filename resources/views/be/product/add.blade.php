@@ -43,7 +43,7 @@
 
                         <div class="form-group">
                             <label>Content</label>
-                            <textarea name="content" class="form-control txt-content"
+                            <textarea name="txt-content" class="form-control txt-content"
                                       placeholder="Enter Content"></textarea>
                         </div>
 
@@ -61,7 +61,7 @@
 
                         <div>
                             <label>Discount Type</label>
-                            <select class="form-control">
+                            <select name="discount_type" class="form-control">
                                 <option value="1">Percentage</option>
                                 <option value="2">Direct Amount</option>
                             </select>
@@ -98,9 +98,7 @@
                 </form>
             </div>
         </div>
-
     </div>
-
 @endsection
 
 @section('bread-crumb')
@@ -139,8 +137,8 @@
             items-align: center;
         }
 
-        .txt-content{
-            height:500px;
+        .txt-content {
+            height: 500px;
         }
     </style>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -188,7 +186,7 @@
     <script>
         tinymce.init({
             selector: '.txt-content',
-            height:'500'
+            height: '500'
         })
     </script>
 @endsection
