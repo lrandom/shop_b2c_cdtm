@@ -43,7 +43,8 @@
 
                         <div class="form-group">
                             <label>Content</label>
-                            <textarea name="content" class="form-control" placeholder="Enter Content"></textarea>
+                            <textarea name="content" class="form-control txt-content"
+                                      placeholder="Enter Content"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -137,7 +138,12 @@
             justify-content: center;
             items-align: center;
         }
+
+        .txt-content{
+            height:500px;
+        }
     </style>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
 
         let filesAmount = [];
@@ -178,5 +184,11 @@
         });
 
 
+    </script>
+    <script>
+        tinymce.init({
+            selector: '.txt-content',
+            height:'500'
+        })
     </script>
 @endsection
