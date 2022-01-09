@@ -17,7 +17,7 @@ class CreateTableImages extends Migration
             $table->id();
             $table->string('path');//lưu đường dẫn của ảnh
             $table->tinyInteger('is_preview')->default('0');//0 là ảnh thường, 1 là ảnh đại diện
-            $table->bigInteger('product_id');
+            $table->bigInteger('post_id');
             $table->timestamps();
         });
     }

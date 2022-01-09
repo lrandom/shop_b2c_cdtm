@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->bigInteger('category_id');
             $table->tinyInteger('type')->default(1);//1- normal, 2 special news
             $table->bigInteger('user_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
