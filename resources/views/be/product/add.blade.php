@@ -69,9 +69,15 @@
                             </select>
                         </div>
 
+                        <div>
+                            <label>Discount Amount</label>
+                            <input type="number" name="discount_amount" class="form-control"
+                                   placeholder="Enter Discount Amount">
+                        </div>
+
                         <div class="form-group">
                             <label>Meta Keyword</label>
-                            <input type="text" name="meta_keyword" class="form-control" placeholder="Enter name">
+                            <input type="text" name="meta_keyword" class="form-control" placeholder="Meta Keyword">
                         </div>
 
                         <div class="form-group">
@@ -81,7 +87,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Meta Content</label>
+                            <label>Meta Description</label>
                             <input type="text" name="meta_description" class="form-control"
                                    placeholder="Enter Meta Description">
                         </div>

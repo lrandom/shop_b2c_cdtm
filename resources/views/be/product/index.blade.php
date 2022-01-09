@@ -25,8 +25,8 @@
                             <tr>
                                 <td>{{$item->id}}</td>
                                 <td>
-                                    @if($item->image)
-                                        <img src="{{asset($item->image->path)}}"
+                                    @if($item->preview)
+                                        <img src="{{asset($item->preview->path)}}"
                                              style="width: 100px; height: 100px">
                                     @else
                                         <img src="https://via.placeholder.com/150

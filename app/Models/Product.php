@@ -43,4 +43,10 @@ class Product extends Model
     {
         return $this->hasOne(Image::class);
     }
+
+    public function preview()
+    {
+        return $this->hasOne(Image::class)
+            ->where('is_preview', 1);
+    }
 }
