@@ -85,29 +85,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-list"></i>
-                        <p>
-                            Product
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('admin.product.list')}}" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.product.add')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Product</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+
 
 
                 {{--                  <li class="nav-item">
