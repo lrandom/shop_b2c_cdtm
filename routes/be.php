@@ -45,6 +45,21 @@ Route::prefix('/admin')->group(function () {
         Route::get('/delete/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])
             ->name('admin.product.delete');
     });
+
+    Route::prefix('/variant')->group(function () {
+        Route::get('/list', [\App\Http\Controllers\Admin\VariantController::class, 'index'])->name('admin.variant.list');
+        Route::get('/add',
+            [\App\Http\Controllers\Admin\VariantController::class, 'add'])->name('admin.variant.add');
+        Route::post('/do-add',
+            [\App\Http\Controllers\Admin\VariantController::class, 'doAdd'])->name('admin.variant.doAdd');
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\VariantController::class, 'edit'])
+            ->name('admin.variant.edit');
+        Route::post('/do-edit/{id}', [\App\Http\Controllers\Admin\VariantController::class, 'doEdit'])
+            ->name('admin.variant.doEdit');
+        Route::get('/delete/{id}', [\App\Http\Controllers\Admin\VariantController::class, 'delete'])
+            ->name('admin.variant.delete');
+    });
+
 });
 
 
