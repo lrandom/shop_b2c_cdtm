@@ -12,6 +12,7 @@
                         <thead>
                         <tr>
                             <th style="width: 10px">#</th>
+                            <th>Logo</th>
                             <th>Name</th>
                         </tr>
                         </thead>
@@ -20,12 +21,23 @@
                         @foreach($list as $item)
                             <tr>
                                 <td>{{$item->id}}</td>
+                                <td>
+                                    @if($item->logo_path)
+                                        <img src="{{asset($item->logo_path)}}" alt="{{$item->name}}"
+                                             style="width: 100px; height: 100px">
+                                    @else
+                                        <img src="https://via.placeholder.com/150
+
+C/O https://placeholder.com/"
+                                             style="width: 100px; height: 100px">
+                                    @endif
+                                </td>
                                 <td>{{$item->name}}</td>
                                 <td>
                                     <a class="btn btn-warning"
-                                       href="{{route('admin.category.edit',['id'=>$item->id])}}">Edit</a>
+                                       href="{{route('admin.brand.edit',['id'=>$item->id])}}">Edit</a>
                                     <a class="btn btn-danger"
-                                       href="{{route('admin.category.delete',['id'=>$item->id])}}"
+                                       href="{{route('admin.brand.delete',['id'=>$item->id])}}"
                                        onclick="return confirm('Are you you want to delete this ?')" href="">Delete</a>
                                 </td>
                             </tr>
@@ -44,7 +56,7 @@
 @section('bread-crumb')
     <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="#">Admin</a></li>
-        <li class="breadcrumb-item"><a href="{{route('admin.category.list')}}">Category</a></li>
+        <li class="breadcrumb-item"><a href="{{route('admin.brand.list')}}">Brand</a></li>
         <li class="breadcrumb-item active">List</li>
     </ol>
 @endsection
