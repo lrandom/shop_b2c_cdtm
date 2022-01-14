@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use App\Models\Variant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -32,11 +33,17 @@ class VariantController extends Controller implements ICrud
     public function delete($id)
     {
         // TODO: Implement delete() method.
+        try {
+            $category = Variant::find($id);
+            $category->delete();
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', "Delete failed");
+        }
+        return redirect()->back()->with('success', "Delete successfully");
     }
 
     public function doAdd(Request $request)
     {
-        // TODO: Implement doAdd() method.
         // TODO: Implement doAdd() method.
         $name = $request->name;
         try {
