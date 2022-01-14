@@ -13,7 +13,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Variant Value</label>
-                            <input type="text" name="variant_value" class="form-control" placeholder="Enter name">
+                            <input type="text" name="variant_value" class="form-control"
+                                   placeholder="Enter Value">
                         </div>
                     </div>
 

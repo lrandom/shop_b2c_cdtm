@@ -10,4 +10,9 @@ class VariantValue extends Model
     use HasFactory;
 
     protected $fillable = ['variant_id', 'value'];
+
+    public function variant()
+    {
+        return $this->belongsTo(Variant::class);
+    }
 }
