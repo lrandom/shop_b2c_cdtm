@@ -12,6 +12,8 @@ class VariantController extends Controller implements ICrud
     public function index()
     {
         // TODO: Implement index() method.
+        $list = Variant::orderBy('id', 'desc')->paginate(10);
+        return view('be.variant.index', compact('list'));
     }
 
     public function add()
@@ -23,6 +25,8 @@ class VariantController extends Controller implements ICrud
     public function edit($id)
     {
         // TODO: Implement edit() method.
+        $variant = Variant::find($id);
+        return view('be.variant.edit', compact('variant'));
     }
 
     public function delete($id)
@@ -49,6 +53,16 @@ class VariantController extends Controller implements ICrud
     public function doEdit($id, Request $request)
     {
         // TODO: Implement doEdit() method.
+        $name = $request->name;
+        try {
+            Variant::where('id', $id)->update([
+                'name' => $name
+            ]);
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', "Update failed");
+        }
+        //chuyển hướng về trang  danh sách
+        return redirect()->route('admin.variant.list')->with('success', 'Update successfully');
     }
 
 }
