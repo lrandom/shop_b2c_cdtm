@@ -74,6 +74,20 @@ Route::prefix('/admin')->group(function () {
             ->name('admin.variant_value.delete');
     });
 
+    Route::prefix('/brand')->group(function () {
+        Route::get('/list', [\App\Http\Controllers\Admin\BrandController::class, 'index'])->name('admin.brand.list');
+        Route::get('/add',
+            [\App\Http\Controllers\Admin\BrandController::class, 'add'])->name('admin.brand.add');
+        Route::post('/do-add',
+            [\App\Http\Controllers\Admin\BrandController::class, 'doAdd'])->name('admin.brand.doAdd');
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\BrandController::class, 'edit'])
+            ->name('admin.brand.edit');
+        Route::post('/do-edit/{id}', [\App\Http\Controllers\Admin\BrandController::class, 'doEdit'])
+            ->name('admin.brand.doEdit');
+        Route::get('/delete/{id}', [\App\Http\Controllers\Admin\BrandController::class, 'delete'])
+            ->name('admin.brand.delete');
+    });
+
 });
 
 
