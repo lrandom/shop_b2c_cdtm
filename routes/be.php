@@ -60,6 +60,20 @@ Route::prefix('/admin')->group(function () {
             ->name('admin.variant.delete');
     });
 
+    Route::prefix('/variant_value')->group(function () {
+        Route::get('/list', [\App\Http\Controllers\Admin\VariantValueController::class, 'index'])->name('admin.variant_value.list');
+        Route::get('/add',
+            [\App\Http\Controllers\Admin\VariantValueController::class, 'add'])->name('admin.variant_value.add');
+        Route::post('/do-add',
+            [\App\Http\Controllers\Admin\VariantValueController::class, 'doAdd'])->name('admin.variant_value.doAdd');
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\VariantValueController::class, 'edit'])
+            ->name('admin.variant_value.edit');
+        Route::post('/do-edit/{id}', [\App\Http\Controllers\Admin\VariantValueController::class, 'doEdit'])
+            ->name('admin.variant_value.doEdit');
+        Route::get('/delete/{id}', [\App\Http\Controllers\Admin\VariantValueController::class, 'delete'])
+            ->name('admin.variant_value.delete');
+    });
+
 });
 
 

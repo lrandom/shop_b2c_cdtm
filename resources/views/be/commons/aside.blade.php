@@ -106,9 +106,34 @@
                                 <p>Add Product</p>
                             </a>
                         </li>
+
                     </ul>
                 </li>
 
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Variant
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.variant.list')}}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Variant</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.variant.add')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Variant</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
 
                 {{--                  <li class="nav-item">
                                       <a href="#" class="nav-link">
