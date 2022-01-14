@@ -35,6 +35,13 @@ class VariantValueController extends Controller implements ICrud
     public function delete($id)
     {
         // TODO: Implement delete() method.
+        try {
+            $variantValue = VariantValue::find($id);
+            $variantValue->delete();
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', "Delete failed");
+        }
+        return redirect()->back()->with('success', "Delete successfully");
     }
 
     public function doAdd(Request $request)

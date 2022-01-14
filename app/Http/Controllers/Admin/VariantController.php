@@ -34,8 +34,8 @@ class VariantController extends Controller implements ICrud
     {
         // TODO: Implement delete() method.
         try {
-            $category = Variant::find($id);
-            $category->delete();
+            $variant = Variant::find($id);
+            $variant->delete();
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', "Delete failed");
         }

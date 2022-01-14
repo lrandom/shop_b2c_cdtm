@@ -47,7 +47,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.user.list')}}" class="nav-link active">
+                            <a href="{{route('admin.user.list')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List User</p>
                             </a>
@@ -71,7 +71,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.category.list')}}" class="nav-link active">
+                            <a href="{{route('admin.category.list')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List Category</p>
                             </a>
@@ -95,7 +95,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.product.list')}}" class="nav-link active">
+                            <a href="{{route('admin.product.list')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List Product</p>
                             </a>
@@ -120,7 +120,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.variant.list')}}" class="nav-link active">
+                            <a href="{{route('admin.variant.list')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List Variant</p>
                             </a>
@@ -129,6 +129,19 @@
                             <a href="{{route('admin.variant.add')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Variant</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{route('admin.variant_value.list')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Variant Value</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.variant_value.add')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Variant Value</p>
                             </a>
                         </li>
 
