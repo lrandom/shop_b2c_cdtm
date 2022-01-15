@@ -15,4 +15,11 @@ class VariantValue extends Model
     {
         return $this->belongsTo(Variant::class);
     }
+
+    public function products()
+    {
+        return $this->
+        belongsToMany(Product::class, 'product_variants',
+            'variant_value_id', 'product_id');
+    }
 }

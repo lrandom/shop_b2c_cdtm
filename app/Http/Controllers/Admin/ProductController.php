@@ -41,6 +41,7 @@ class ProductController extends Controller implements ICrud
         $price = $request->price;
         $brandId = $request->brand_id ?? 0;
         $discountType = $request->discount_type;
+        $discountAmount = $request->discount_amount;
         $metaKeyword = $request->meta_keyword;
         $metaContent = $request->meta_content;
         $metaDescription = $request->meta_description;
@@ -52,7 +53,7 @@ class ProductController extends Controller implements ICrud
                 'content' => htmlentities($content),
                 'price' => $price,
                 'brand_id' => $brandId,
-                'discount_amount' => 0,
+                'discount_amount' => $discountAmount,
                 'discount_type' => $discountType,
                 'meta_keyword' => $metaKeyword,
                 'meta_description' => $metaDescription,
@@ -119,7 +120,19 @@ class ProductController extends Controller implements ICrud
         // TODO: Implement edit() method.
         $categories = \App\Models\Category::all();
         $product = Product::find($id);//lấy ra product có id là $id truyền vào
-        return view('be.product.edit', compact('product', 'categories'));
+        $brands = Brand::all();
+        $variants = Variant::all();
+
+        $variantValueIds = $product->variantValues->toArray();
+        $variantValueIdsArr = [];
+        foreach ($variantValueIds as $variantValueIdObj) {
+           // echo $variantValueIdObj['id'];
+            $variantValueIdsArr[] = $variantValueIdObj['id'];//id of variant_value
+        }
+
+        //dd($variantValueIdsArr);
+        return view('be.product.edit', compact('product',
+            'categories', 'brands', 'variants', 'variantValueIdsArr'));
     }
 
     public function doEdit($id, Request $request)

@@ -67,7 +67,12 @@
                         <div>
                             <label>Brand</label>
                             <select name="brand_id" class="form-control">
-                                <option></option>
+                                <option value="0">Brand</option>
+                                @foreach($brands as $brand)
+                                    <option <?php if ($brand->id == $product->brand_id) {
+                                        echo 'selected="selected"';
+                                    } ?> value="{{$brand->id}}">{{$brand->name}}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -116,6 +121,31 @@
                             <label>Short Description</label>
                             <textarea name="short_description" value="{{$product->short_description}}"
                                       class="form-control"></textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="font-weight-bolder">Variant</label>
+                            <div>
+                                @foreach($variants as $variant)
+                                    <div>
+                                        <div class="font-weight-bold">{{$variant->name}}</div>
+                                        <div class="ml-2">
+                                            @foreach($variant->variantValues as $variantValue)
+                                                <div>
+                                                    <input type="checkbox"
+                                                           <?php if(in_array($variantValue->id,$variantValueIdsArr)){echo 'checked="checked"';} ?>
+                                                           name="variants[]"
+                                                           value="{{$variant->id}}$|{{$variant->name}}$|{{$variantValue->id}}$|{{$variantValue->value}}"/>
+                                                    <span>
+                                                     {{$variantValue->value}}
+                                                 </span>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
 
                     </div>

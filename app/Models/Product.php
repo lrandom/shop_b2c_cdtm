@@ -49,4 +49,19 @@ class Product extends Model
         return $this->hasOne(Image::class)
             ->where('is_preview', 1);
     }
+
+    public function variants()
+    {
+        return $this->belongsToMany(Variant::class, 'product_variants',
+            'product_id',
+            'variant_id');
+    }
+
+    public function variantValues()
+    {
+        return $this->belongsToMany(VariantValue::class, 'product_variants',
+            'product_id',
+            'variant_value_id');
+    }
+
 }
