@@ -126,7 +126,7 @@ class ProductController extends Controller implements ICrud
         $variantValueIds = $product->variantValues->toArray();
         $variantValueIdsArr = [];
         foreach ($variantValueIds as $variantValueIdObj) {
-           // echo $variantValueIdObj['id'];
+            // echo $variantValueIdObj['id'];
             $variantValueIdsArr[] = $variantValueIdObj['id'];//id of variant_value
         }
 
@@ -193,6 +193,37 @@ class ProductController extends Controller implements ICrud
                     $i++;
                 }
             }
+
+
+            if ($request->has('variants')) {
+                $variants = $request->variants;
+                //delete old data
+                ProductVariant::where('product_id', $id)
+                    ->delete();
+
+                foreach ($variants as $variant) {
+                    //2$|Color$|2$|Green
+                    $variantArr = explode('$|', $variant);//[2,"Color",2,"Green"]
+                    if (count($variantArr) == 4) {
+                        $variantId = $variantArr[0];
+                        $variantName = $variantArr[1];
+                        $variantValueId = $variantArr[2];
+                        $variantValueName = $variantArr[3];
+
+
+
+                        ProductVariant::create([
+                            'product_id' => $id,
+                            'variant_id' => $variantId,
+                            'variant_name' => $variantName,
+                            'variant_value_id' => $variantValueId,
+                            'variant_value_name' => $variantValueName
+                        ]);
+                    }
+
+                }
+            }
+
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', "Update failed");
         }
