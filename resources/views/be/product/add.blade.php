@@ -110,7 +110,7 @@
                                         <div class="ml-2">
                                             @foreach($variant->variantValues as $variantValue)
                                                 <div>
-                                                    <input type="checkbox" value="{{$variantValue->id}}"/>
+                                                    <input type="checkbox" name="variants[]" value="{{$variant->id}}$|{{$variant->name}}$|{{$variantValue->id}}$|{{$variantValue->value}}"/>
                                                     <span>
                                                      {{$variantValue->value}}
                                                  </span>
