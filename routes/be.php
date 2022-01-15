@@ -47,6 +47,9 @@ Route::prefix('/admin')->group(function () {
             ->name('admin.product.doEdit');
         Route::get('/delete/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])
             ->name('admin.product.delete');
+
+        Route::get('/search', [\App\Http\Controllers\Admin\ProductController::class, 'search'])
+            ->name('admin.product.search');
     });
 
     Route::prefix('/variant')->group(function () {

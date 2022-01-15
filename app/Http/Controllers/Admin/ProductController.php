@@ -242,5 +242,17 @@ class ProductController extends Controller implements ICrud
         }
         return redirect()->back()->with('success', "Delete successfully");
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $list = Product::where('name', 'like', "%$query%")
+            ->orWhere('price', 'like', "%$query%")
+            ->orWhere('short_description', 'like', "%$query%")
+            ->orWhere('content', 'like', "%$query%")
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+        return view('be.product.index', compact('list'));
+    }
 }
 

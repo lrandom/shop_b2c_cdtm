@@ -5,10 +5,19 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title"></h3>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control">
-
-                    </div>
+                    <form class="form-inline" action="{{route('admin.product.search')}}">
+                        <div class="input-group">
+                            <input class="form-control"
+                                   type="search"
+                                   name="query"
+                                   placeholder="Type anything" aria-label="Search">
+                            <div class="input-group-append bg-primary">
+                                <button class="btn btn-sidebar">
+                                    <i class="fas fa-search fa-fw text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -64,7 +73,7 @@ C/O https://placeholder.com/"
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                    {{$list->links()}}
+                    {{$list->appends(request()->query())->links()}}
                 </div>
             </div>
         </div>
