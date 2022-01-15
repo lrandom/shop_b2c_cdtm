@@ -35,3 +35,7 @@
         <li class="breadcrumb-item active">Add</li>
     </ol>
 @endsection
+
+@section('heading')
+    Variant
+@endsection

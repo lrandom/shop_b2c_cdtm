@@ -42,3 +42,8 @@
         <li class="breadcrumb-item active">Edit</li>
     </ol>
 @endsection
+
+
+@section('heading')
+    Variant Value
+@endsection

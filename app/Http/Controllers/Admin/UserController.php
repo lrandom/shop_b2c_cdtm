@@ -90,4 +90,15 @@ class UserController extends Controller implements ICrud
         return redirect()->back()->with('success', "Delete successfully");
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $list = User::where('full_name', 'like', "%$query%")
+            ->orWhere('email', 'like', "%$query%")
+            ->orWhere('phone', 'like', "%$query%")
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+        return view('be.user.index', compact('list'));
+    }
+
 }

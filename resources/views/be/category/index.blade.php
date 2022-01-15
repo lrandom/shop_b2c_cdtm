@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Bordered Table</h3>
+                    <h3 class="card-title"></h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -47,4 +47,9 @@
         <li class="breadcrumb-item"><a href="{{route('admin.category.list')}}">Category</a></li>
         <li class="breadcrumb-item active">List</li>
     </ol>
+@endsection
+
+
+@section('heading')
+    Category
 @endsection

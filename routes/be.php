@@ -16,6 +16,9 @@ Route::prefix('/admin')->group(function () {
             ->name('admin.user.doEdit');
         Route::get('/delete/{id}', [\App\Http\Controllers\Admin\UserController::class, 'delete'])
             ->name('admin.user.delete');
+
+        Route::get('/search', [\App\Http\Controllers\Admin\UserController::class, 'search'])
+            ->name('admin.user.search');
     });
 
     Route::prefix('/category')->group(function () {

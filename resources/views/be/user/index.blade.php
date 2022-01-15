@@ -4,7 +4,20 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Bordered Table</h3>
+                    <h3 class="card-title"></h3>
+                    <form class="form-inline" action="{{route('admin.user.search')}}">
+                        <div class="input-group">
+                            <input class="form-control"
+                                   type="search"
+                                   name="query"
+                                   placeholder="Type anything" aria-label="Search">
+                            <div class="input-group-append bg-primary">
+                                <button class="btn btn-sidebar">
+                                    <i class="fas fa-search fa-fw text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -42,7 +55,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                    {{$list->links()}}
+                    {{$list->appends(request()->query())->links()}}
                 </div>
             </div>
         </div>
@@ -54,4 +67,8 @@
         <li class="breadcrumb-item"><a href="{{route('admin.user.list')}}">User</a></li>
         <li class="breadcrumb-item active">List</li>
     </ol>
+@endsection
+
+@section('heading')
+    User
 @endsection
