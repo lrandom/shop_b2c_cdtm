@@ -16,9 +16,6 @@
                             <input type="text" name="variant_value" class="form-control" value="{{$variantValue->value}}"
                                    placeholder="Enter Value">
                         </div>
-                    </div>
-
-                    <div class="card-body">
                         <div class="form-group">
                             <label>Variant</label>
                             <select class="form-control" name="variant_id">

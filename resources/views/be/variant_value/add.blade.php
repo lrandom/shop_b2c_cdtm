@@ -16,9 +16,7 @@
                             <input type="text" name="variant_value" class="form-control"
                                    placeholder="Enter Value">
                         </div>
-                    </div>
 
-                    <div class="card-body">
                         <div class="form-group">
                             <label>Variant</label>
                             <select class="form-control" name="variant_id">

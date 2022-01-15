@@ -10,4 +10,9 @@ class Variant extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function variantValues()
+    {
+        return $this->hasMany(VariantValue::class);
+    }
 }

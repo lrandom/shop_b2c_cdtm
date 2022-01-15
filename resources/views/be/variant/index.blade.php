@@ -13,6 +13,7 @@
                         <tr>
                             <th style="width: 10px">#</th>
                             <th>Name</th>
+                            <th>Variant Value</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -21,6 +22,11 @@
                             <tr>
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name}}</td>
+                                <td>
+                                    @foreach($item->variantValues as $variantValue)
+                                        <span class="badge badge-primary">{{$variantValue->value}}</span>
+                                    @endforeach
+                                </td>
                                 <td>
                                     <a class="btn btn-warning"
                                        href="{{route('admin.variant.edit',['id'=>$item->id])}}">Edit</a>
