@@ -57,7 +57,10 @@
                         <div>
                             <label>Brand</label>
                             <select name="brand_id" class="form-control">
-                                <option></option>
+                                <option value="0">Brand</option>
+                                @foreach($brands as $brand)
+                                    <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -95,6 +98,28 @@
                         <div class="form-group">
                             <label>Short Description</label>
                             <textarea name="short_description" class="form-control"></textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="font-weight-bolder">Variant</label>
+                            <div>
+                                @foreach($variants as $variant)
+                                    <div>
+                                        <div class="font-weight-bold">{{$variant->name}}</div>
+                                        <div class="ml-2">
+                                            @foreach($variant->variantValues as $variantValue)
+                                                <div>
+                                                    <input type="checkbox" value="{{$variantValue->id}}"/>
+                                                    <span>
+                                                     {{$variantValue->value}}
+                                                 </span>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
 
                     </div>

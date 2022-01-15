@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Image;
 use App\Models\Product;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PHPUnit\Exception;
@@ -23,7 +25,10 @@ class ProductController extends Controller implements ICrud
     {
         // TODO: Implement add() method.
         $categories = \App\Models\Category::all();
-        return view('be.product.add', compact('categories'));
+        $brands = Brand::all();
+        $variants = Variant::all();
+        return view('be.product.add', compact('categories',
+            'brands','variants'));
     }
 
     public function doAdd(Request $request)
