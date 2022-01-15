@@ -211,7 +211,6 @@ class ProductController extends Controller implements ICrud
                         $variantValueName = $variantArr[3];
 
 
-
                         ProductVariant::create([
                             'product_id' => $id,
                             'variant_id' => $variantId,
