@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/ve-chung-toi', [\App\Http\Controllers\HomeController::class, 'about']);
 Route::get('/be-layout', function () {
     return view('be.layout');
-});
+});*/
 
 require_once __DIR__ . '/be.php';
+require_once __DIR__ . '/fe.php';

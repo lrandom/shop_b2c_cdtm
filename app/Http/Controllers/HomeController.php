@@ -8,12 +8,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-
+        return view('fe.layout');
     }
 
     public function about()
     {
-        return view('about');
+
     }
 
     public function contact()
