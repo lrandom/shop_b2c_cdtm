@@ -55,19 +55,28 @@
                     All</a>
             </h3>
             <div class="grid md:grid-cols-4 grid-cols-1 gap-10">
-                @for($i=0;$i<8;$i++)
+                @foreach($featureProducts as $product)
                     <div class="shadow">
                         <div class="relative">
-                            <img src="{{asset('fe/img/shoes.jpeg')}}" class="object-cover h-64 w-full"/>
-                            <a class="absolute top-4 w-10 h-10 text-center rounded shadow right-4 p-2 bg-white">
-                                <i class="bi bi-heart"></i>
-                            </a>
+
+                            @if($product->preview > 0)
+                                <img src="{{asset($product->preview)}}" class="object-cover h-64 w-full"/>
+                            @else
+                                <img src="https://via.placeholder.com/150
+
+C/O https://placeholder.com/"
+                                     class="object-cover h-64 w-full">
+
+                                <a class="absolute top-4 w-10 h-10 text-center rounded shadow right-4 p-2 bg-white">
+                                    <i class="bi bi-heart"></i>
+                                </a>
+                            @endif
                         </div>
 
 
                         <div class="px-4 py-2">
                             <div class="flex justify-between items-center">
-                                <h3 class="font-bold text-lg">Product Name</h3>
+                                <h3 class="font-bold text-lg">{{$product->name}}</h3>
                                 <a class="shadow py-1 px-2 text-center w-10 rounded" style="background: #F2C94C;">
                                     <i class="bi bi-cart "></i>
                                 </a>
@@ -76,12 +85,10 @@
                                 <span class="text-gray-400 line-through">300$</span>
                                 <span class="text-red-500">300$</span>
                             </div>
-                            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Accusamus,
-                                adipisci.</p>
+                            <p class="text-sm">{{$product->short_description}}</p>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
 
@@ -91,7 +98,7 @@
                     All</a>
             </h3>
             <div class="grid md:grid-cols-4 grid-cols-1 gap-10">
-                @for($i=0;$i<8;$i++)
+                @foreach($newProducts as $product)
                     <div class="shadow">
                         <div class="relative">
                             <img src="{{asset('fe/img/shoes.jpeg')}}" class="object-cover h-64 w-full"/>
@@ -117,7 +124,7 @@
                                 adipisci.</p>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
 
@@ -147,7 +154,7 @@
 
     <!--FOOTER-->
     <footer>
-        
+
     </footer>
     <!--END FOOTER-->
 </div>
