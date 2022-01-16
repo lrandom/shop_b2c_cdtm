@@ -8,6 +8,12 @@
     <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="{{asset('fe/owl-carousel/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('fe/owl-carousel/assets/owl.theme.default.min.css')}}">
+
+    <script src="{{asset('fe/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('fe/owl-carousel/owl.carousel.min.js')}}"></script>
 </head>
 <body>
 <div class="container mx-auto space-y-10">
@@ -45,7 +51,8 @@
     <div class="space-y-10">
         <!--TOP PRODUCT-->
         <div class="space-y-5">
-            <h3 class="font-bold text-xl">FEATURE PRODUCT <a style="color:#F2994A;" class="text-sm font-normal">See All</a>
+            <h3 class="font-bold text-xl">FEATURE PRODUCT <a style="color:#F2994A;" class="text-sm font-normal">See
+                    All</a>
             </h3>
             <div class="grid md:grid-cols-4 grid-cols-1 gap-10">
                 @for($i=0;$i<8;$i++)
@@ -113,13 +120,56 @@
                 @endfor
             </div>
         </div>
+
+
+        <div class="space-y-5">
+            <h3 class="font-bold text-xl">
+                BRAND
+            </h3>
+
+            <div>
+                <!-- Set up your HTML -->
+                <div class="owl-carousel">
+                    @for($i=0;$i<20;$i++)
+                        <div class="p-2">
+                            <div class="shadow bg-gray-200 h-24 flex items-center justify-center">
+                                <img src="{{asset('fe/img/nike.jpeg')}}"
+                                     class="object-fit h-16 w-full"/>
+                            </div>
+                        </div>
+                    @endfor
+
+                </div>
+            </div>
+        </div>
     </div>
-
-
-
     <!--END MAIN CONTENT-->
 
-
+    <!--FOOTER-->
+    <footer>
+        
+    </footer>
+    <!--END FOOTER-->
 </div>
+
+<script>
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+            items: 10,
+            autoplay: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 10
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
