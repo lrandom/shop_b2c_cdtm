@@ -11,11 +11,11 @@
 </head>
 <body>
 <div class="container mx-auto">
-    <img src="{{asset('fe/img/logo.png')}}"/>
+    <img src="{{asset('fe/img/logo.png')}}" width="160" class="mx-auto"/>
 
-    <nav class="flex justify-between">
-        <div>
-            <a href="">Home</a>
+    <nav class="flex justify-between items-center shadow p-3" style="background: #f6f6f6">
+        <div class="text-xl uppercase font-semibold space-x-3">
+            <a href=""><i class="bi bi-house"></i></a>
             <a href="">Nữ</a>
             <a href="">Nam</a>
             <a href="">Trẻ em</a>
@@ -23,9 +23,17 @@
             <a href="">Classic</a>
         </div>
 
-        <div>
-            <input type="search" class="shadow border border-1 border-gray-200 p-2" placeholder="search..."/>
+        <div class="flex items-center gap-2">
+            <input type="search" class="shadow border border-1 border-gray-200 p-2 w-64"
+                   placeholder="search..."/>
+            <div class="text-xl">
+                <a href=""><i class="bi bi-heart"></i></a>
+                <a href=""><i class="bi bi-person"></i></a>
+                <a href=""><i class="bi bi-cart"></i></a>
+            </div>
+
         </div>
+
     </nav>
 </div>
 </body>
