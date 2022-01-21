@@ -153,6 +153,23 @@ C/O https://placeholder.com/"
     </div>
     <!--END MAIN CONTENT-->
 
+    <!--NEWSETTLER FORM-->
+    <div class="md:flex justify-between items-center p-10" style="background: #DFDFDF">
+        <div>
+            <h4 class="font-bold text-3xl">Đăng ký nhận bản tin</h4>
+            <p class="font-bold text-base">Đừng bỏ lỡ hàng ngàn sản phẩm và các chuwong trình siêu hấp dẫn</p>
+        </div>
+
+        <div>
+            <form class="flex gap-2 items-center border-2">
+                <input type="email" class="bg-white h-16 w-36 p-2"/>
+                <button class="uppercase text-2xl h-16 font-bold bg-yellow-300 p-2">Get News</button>
+            </form>
+        </div>
+    </div>
+
+    <!--END FORM-->
+
     <!--FOOTER-->
     <footer>
 
