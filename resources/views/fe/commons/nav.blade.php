@@ -1,6 +1,5 @@
 @php
     $categories = \App\Models\Category::all();
-
 @endphp
 
 <nav class="flex justify-between items-center shadow"
@@ -20,8 +19,11 @@
     </div>
 
     <div class="flex items-center gap-2">
-        <input type="search" class="shadow border border-1 border-gray-400 p-2 w-64"
-               placeholder="search..."/>
+        <form action="{{route('fe.search')}}">
+            <input type="search" name="q" class="shadow border border-1 border-gray-400 p-2 w-64"
+                   placeholder="search..."/>
+        </form>
+
         <div class="text-xl">
             <a class=" hover:bg-black hover:text-white px-3 py-5 text-black inline-block h-full" href="">
                 <i class="bi bi-heart"></i></a>

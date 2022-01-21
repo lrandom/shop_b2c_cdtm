@@ -26,7 +26,16 @@ class HomeController extends Controller
         $products = Product::where('category_id', $id)->paginate(12);
         $category = Category::find($id);
         return view('fe.category',
-            compact('products','category'));
+            compact('products', 'category'));
+    }
+
+    public function search(Request $request)
+    {
+        $q = $request->query('q');
+        $products = Product::where('name', 'like', '%' . $q . '%')
+            ->orWhere('short_description', 'like', '%' . $q . '%')
+            ->paginate(12);
+        return view('fe.search', compact('products', 'q'));
     }
 
     public function about()
