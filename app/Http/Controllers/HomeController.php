@@ -20,6 +20,13 @@ class HomeController extends Controller
                 'newProducts'));
     }
 
+    public function category($id)
+    {
+        $products = Product::where('category_id', $id)->paginate(12);
+        return view('fe.category',
+            compact('products'));
+    }
+
     public function about()
     {
 
