@@ -2,7 +2,7 @@
     <div class="relative">
 
         @if($product->preview)
-            <img src="{{asset($product->preview)}}" class="object-cover h-64 w-full"/>
+            <img src="{{asset($product->preview->path)}}" class="object-cover h-64 w-full"/>
         @else
             <img src="https://via.placeholder.com/150
 

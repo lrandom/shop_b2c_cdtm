@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 use App\Models\Product;
@@ -23,8 +24,9 @@ class HomeController extends Controller
     public function category($id)
     {
         $products = Product::where('category_id', $id)->paginate(12);
+        $category = Category::find($id);
         return view('fe.category',
-            compact('products'));
+            compact('products','category'));
     }
 
     public function about()
