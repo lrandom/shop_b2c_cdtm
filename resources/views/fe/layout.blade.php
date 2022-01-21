@@ -129,26 +129,27 @@ C/O https://placeholder.com/"
         </div>
 
 
-        <div class="space-y-5">
-            <h3 class="font-bold text-xl">
-                BRAND
-            </h3>
+        @if($brands && count($brands->toArray())>0)
+            <div class="space-y-5">
+                <h3 class="font-bold text-xl">
+                    BRAND
+                </h3>
 
-            <div>
-                <!-- Set up your HTML -->
-                <div class="owl-carousel">
-                    @for($i=0;$i<20;$i++)
-                        <div class="p-2">
-                            <div class="shadow bg-gray-200 h-24 flex items-center justify-center">
-                                <img src="{{asset('fe/img/nike.jpeg')}}"
-                                     class="object-fit h-16 w-full"/>
+                <div>
+                    <!-- Set up your HTML -->
+                    <div class="owl-carousel">
+                        @foreach($brands as $item)
+                            <div class="p-2">
+                                <div class="shadow bg-gray-200 p-2 h-24 flex items-center justify-center">
+                                    <img src="{{asset($item->logo_path)}}"
+                                         class="object-cover h-16 w-full"/>
+                                </div>
                             </div>
-                        </div>
-                    @endfor
-
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
     <!--END MAIN CONTENT-->
 
