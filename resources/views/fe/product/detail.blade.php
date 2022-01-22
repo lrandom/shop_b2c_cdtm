@@ -1,61 +1,53 @@
 @extends('fe.layout')
 @section('content')
     <div class="space-y-2">
-        <div class="grid md:grid-cols-2">
+        <div class="grid md:grid-cols-2 gap-10">
             <div>
                 <!--TRÌNH XEM ẢNH-->
+                <figure>
+                    <img class="w-full"
+                         src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/41df245f-a1e5-4c6a-9c73-bdb0617202f1/court-vision-low-shoes-MRkRPF.png"/>
+                </figure>
+
+
             </div>
 
             <div class="space-y-2">
-                <h1 class="font-bold text-2xl">Nike Air Max 2090</h1>
+                <h1 class="font-bold text-2xl">{{$product->name}}</h1>
                 <div>
                     <span>SKU: 189216792</span>
                 </div>
                 <div class="font-bold text-xl">
-                    3000.000 VND
+                    {{$product->price}} VND
                 </div>
 
                 <hr class="borer-b border-1 bg-gray-200">
 
                 <div class="space-y-5">
-                    <div class="space-y-2">
-                        <div>Color</div>
-                        <div class="flex flex-wrap gap-4">
-                            <div class="flex items-center gap-2">
-                                <div class="bg-gray-200 rounded-full h-6 w-6"></div>
-                                <span>Green</span>
-                            </div>
 
-                            <div class="flex items-center gap-2">
-                                <div class="bg-gray-200 rounded-full h-6 w-6"></div>
-                                <span>Red</span>
-                            </div>
+                    @foreach($variantValues as $variantValue)
 
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-center gap-4">
+                                <?php
+                                if ($variantValue[0]) {
+                                    $variant = \App\Models\Variant::find($variantValue[0]->variant_id);
+                                }
+
+                                ?>
+                                @if(isset($variant))
+                                    <div>{{$variant->name}}</div>
+                                @endif
+                                @foreach($variantValue as $variantValue1)
+                                    <div class="border px-5 h-10 flex items-center justify-center cursor-pointer">
+                                        <div>
+                                            {{$variantValue1->value}}
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <div>Size</div>
-                        <div class="flex flex-wrap gap-4">
-                            <div class="border w-10 h-10 flex items-center justify-center">
-                                <div>
-                                    8
-                                </div>
-                            </div>
-                            <div class="border w-10 h-10 flex items-center justify-center">
-                                <div>
-                                    9
-                                </div>
-                            </div>
-                            <div class="border w-10 h-10 flex items-center justify-center">
-                                <div>
-                                    9.5
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
+                    @endforeach
 
                     <div class="w-28 border">
                         <div class="flex w-full items-center justify-evenly gap-2 border-gray-300">
@@ -93,23 +85,23 @@
         <h4 class="font-semibold text-xl">Thông tin</h4>
         <hr class="borer-b border-1 bg-gray-200"/>
         <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, asperiores, atque, autem
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, asperiores, atque, autem
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, asperiores, atque, autem
+            {!!$product->content!!}
         </div>
 
     </div>
 
     <div>
-        <h3 class="font-bold text-xl uppercase">You might like this <a style="color:#F2994A;"
-                                                                       class="text-sm font-normal">See
+        <h3 class="font-bold text-xl uppercase">You might like this
+            <a style="color:#F2994A;"
+               class="text-sm font-normal">See
                 All</a>
         </h3>
-        <div>
-
+        <div class="grid grid-cols-4 gap-10">
+            @foreach($suggestProducts as $product)
+                @include('fe.components.card-product',
+['product'=>$product])
+            @endforeach
         </div>
     </div>
-
-
 @endsection
 
