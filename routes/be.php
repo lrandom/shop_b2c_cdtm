@@ -30,6 +30,22 @@ Route::prefix('/admin')->group(function () {
             ->name('admin.category.doEdit');
         Route::get('/delete/{id}', [\App\Http\Controllers\Admin\CategoriesController::class, 'delete'])
             ->name('admin.category.delete');
+
+    });
+
+    Route::prefix('/post')->group(function () {
+        Route::get('/list', [\App\Http\Controllers\Admin\PostController::class, 'index'])->name('admin.post.list');
+        Route::get('/add',
+            [\App\Http\Controllers\Admin\PostController::class, 'add'])->name('admin.post.add');
+        Route::post('/do-add',
+            [\App\Http\Controllers\Admin\PostController::class, 'doAdd'])->name('admin.post.doAdd');
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\PostController::class, 'edit'])
+            ->name('admin.post.edit');
+        Route::post('/do-edit/{id}', [\App\Http\Controllers\Admin\PostController::class, 'doEdit'])
+            ->name('admin.post.doEdit');
+        Route::get('/delete/{id}', [\App\Http\Controllers\Admin\PostController::class, 'delete'])
+            ->name('admin.post.delete');
+
     });
 
 });
