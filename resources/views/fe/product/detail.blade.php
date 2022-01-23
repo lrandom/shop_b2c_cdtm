@@ -14,9 +14,11 @@
 
             <div class="space-y-2">
                 <h1 class="font-bold text-2xl">{{$product->name}}</h1>
-                <div>
-                    <span>SKU: 189216792</span>
-                </div>
+                @if($product->sku)
+                    <div>
+                        <span>SKU: {{$product->sku}}</span>
+                    </div>
+                @endif
                 <div class="font-bold text-xl">
                     {{$product->price}} VND
                 </div>
@@ -96,7 +98,7 @@
                class="text-sm font-normal">See
                 All</a>
         </h3>
-        <div class="grid grid-cols-4 gap-10">
+        <div class="grid grid-cols-4 gap-10 mt-5">
             @foreach($suggestProducts as $product)
                 @include('fe.components.card-product',
 ['product'=>$product])
