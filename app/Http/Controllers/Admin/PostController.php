@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,8 @@ class PostController extends Controller implements ICrud
     public function add()
     {
         // TODO: Implement add() method.
-        return view('be.post.add');
+        $categories = Category::all();
+        return view('be.post.add', compact('categories'));
     }
 
     public function edit($id)
