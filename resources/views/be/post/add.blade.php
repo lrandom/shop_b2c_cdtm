@@ -12,8 +12,64 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Enter name">
+                            <label for="exampleInputFile">Thumbnail</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" name="thumbnail" class="custom-file-input" id="exampleInputFile">
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" name="title" class="form-control" placeholder="Enter title">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Content</label>
+                            <textarea name="content"
+                                      class="form-control"
+                                      placeholder="Enter content"></textarea>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Short Description</label>
+                            <input type="text" name="short_description" class="form-control"
+                                   placeholder="Enter Short Description">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Meta keyword</label>
+                            <input type="text" name="meta_keyword" class="form-control"
+                                   placeholder="Meta Keyword">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Meta Description</label>
+                            <input type="text" name="meta_description" class="form-control"
+                                   placeholder="Meta Description">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select name="category_id" class="form-control">
+                                <option>Select Category</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select name="type" class="form-control">
+                                <option value="1">Normal News</option>
+                                <option value="2">Special News</option>
+                            </select>
                         </div>
                     </div>
                     <!-- /.card-body -->
