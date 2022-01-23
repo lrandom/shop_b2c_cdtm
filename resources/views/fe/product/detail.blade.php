@@ -54,7 +54,7 @@
                     <div class="w-28 border">
                         <div class="flex w-full items-center justify-evenly gap-2 border-gray-300">
                             <div class="text-xl pl-10 cursor-pointer">+</div>
-                            <input type="number" class="
+                            <input type="number" value="1" id="quantity" class="
                             my-2
                          border-l
                          text-center border-r
@@ -67,7 +67,10 @@
 
                     <div class="w-1/2 space-y-2">
 
-                        <button class="bg-black w-full text-white py-4 uppercase">Add To Cart</button>
+                        <button id="btn-add-to-cart" class="bg-black w-full text-white py-4 uppercase">
+                            Add To Cart
+                        </button>
+
                         <div class="w-full flex gap-2">
                             <button class="border border-gray-300 py-4 px-2 text-sm uppercase w-1/2 inline-block">
                                 <i class="bi bi-heart"></i>
@@ -105,5 +108,31 @@
             @endforeach
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $('#btn-add-to-cart').click(function () {
+                let quantity = $('#quantity').val();
+                let variantValues = ["Đen", "Đỏ"];
+                /*   $('.variant-value').each(function () {
+                       variantValues.push($(this).val());
+                   });*/
+                $.ajax({
+                    url: '{{route('api.cart.add')}}',
+                    type: 'POST',
+                    data: {
+                        id: {{\Illuminate\Support\Facades\Request::segment(2)}},
+                        quantity: quantity,
+                        variant_values: variantValues
+                    },
+                    success: function (data) {
+                        alert('Thêm vào giỏ hàng thành công');
+                    }
+                })
+            })
+        })
+    </script>
 @endsection
 

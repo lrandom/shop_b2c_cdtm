@@ -78,7 +78,7 @@ class BrandController extends Controller implements ICrud
             }
 
             //upload logo
-            if($request->file('logo')) {
+            if ($request->file('logo')) {
                 $file = $request->file('logo');
                 $logoFileName = $id . $file->getClientOriginalName();
                 $file->storeAs('images/brand/logo', $logoFileName, 'public');

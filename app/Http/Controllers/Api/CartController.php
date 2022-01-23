@@ -5,10 +5,16 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\Product;
 
 class CartController extends Controller
 {
     const SESSION_CART = 'cart';
+
+    public function __construct()
+    {
+        session_start();
+    }
 
 
     public function addToCart(Request $request)
@@ -17,12 +23,19 @@ class CartController extends Controller
         $quantity = $request->quantity;
         //$variantValues = $request->variantValues;
         $product = Product::find($id);
-        $cart = Session::has(self::SESSION_CART) ?
-            Session::get(self::SESSION_CART)
-            : [];
+        /*     $cart = Session::has(self::SESSION_CART) ?
+                 Session::get(self::SESSION_CART)
+                 : [];*/
+
+        /* $cart = Session::has(self::SESSION_CART) ?
+             Session::get(self::SESSION_CART)
+             : [];*/
+
+        $cart = isset($_SESSION[self::SESSION_CART])
+            ? $_SESSION[self::SESSION_CART] : [];
 
         /*        $cart = [
-                    [
+                    id=>[
                         'id' => $product->id,
                         'name' => $product->name,
                         'price' => $product->price,
@@ -40,13 +53,22 @@ class CartController extends Controller
 
         $cartCollect = collect($cart);
 
+        //dd($cart);
         //tìm kiếm một sản phẩm trong giỏ hàng mà có id = id truyền lên
         $cartItem = $cartCollect->first(function ($item) use ($id) {
-            return $item->id == $id;
+            return $item['id'] == $id;
         });
         if ($cartItem) {
             //đã tồn tại sp trong giỏ hàng
             //tăng số lượng lên 1
+            $cartItem['quantity'] = $cartItem['quantity'] + $quantity;
+            $cartCollect->map(function ($item) use ($id, $cartItem) {
+                if ($item['id'] == $id) {
+                    return $cartItem;
+                }
+                return $item;
+            })->search($id);
+            $cart = $cartCollect->toArray();
         } else {
             //chưa có sp trong giỏ hàng
             //thêm sp vào trong giỏ hàng
@@ -60,7 +82,8 @@ class CartController extends Controller
         }
 
         //cập nhật lại giỏ hàng
-        Session::put(self::SESSION_CART, $cart);
+        //Session::put(self::SESSION_CART, $cart);
+        $_SESSION[self::SESSION_CART] = $cart;
         return response()->json(['cart' => $cart], 200);
     }
 
@@ -76,9 +99,8 @@ class CartController extends Controller
 
     public function getCart()
     {
-        $cart = Session::has(self::SESSION_CART) ?
-            Session::get(self::SESSION_CART)
-            : [];
+        $cart = isset($_SESSION[self::SESSION_CART])
+            ? $_SESSION[self::SESSION_CART] : [];
         return response()->json(['cart' => $cart], 200);
     }
 }
