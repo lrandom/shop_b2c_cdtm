@@ -30,7 +30,14 @@
 
 </div>
 
+<script src="{{asset('fe/js/cart.js')}}"></script>
+<script>
+    const API_TOTAL_ITEMS_IN_CART = "{{route('api.cart.total-items')}}";
+    getTotalItems(API_TOTAL_ITEMS_IN_CART);
+</script>
 @section('script')
 @show
+
+
 </body>
 </html>

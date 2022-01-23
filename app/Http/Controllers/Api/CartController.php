@@ -62,13 +62,13 @@ class CartController extends Controller
             //đã tồn tại sp trong giỏ hàng
             //tăng số lượng lên 1
             $cartItem['quantity'] = $cartItem['quantity'] + $quantity;
-            $cartCollect->map(function ($item) use ($id, $cartItem) {
+            $cart = $cartCollect->map(function ($item) use ($id, $cartItem) {
                 if ($item['id'] == $id) {
                     return $cartItem;
                 }
                 return $item;
-            })->search($id);
-            $cart = $cartCollect->toArray();
+            });
+            $cart = $cart->toArray();
         } else {
             //chưa có sp trong giỏ hàng
             //thêm sp vào trong giỏ hàng
@@ -102,5 +102,12 @@ class CartController extends Controller
         $cart = isset($_SESSION[self::SESSION_CART])
             ? $_SESSION[self::SESSION_CART] : [];
         return response()->json(['cart' => $cart], 200);
+    }
+
+    public function getTotalItems()
+    {
+        $cart = isset($_SESSION[self::SESSION_CART])
+            ? $_SESSION[self::SESSION_CART] : [];
+        return response()->json(['total_items' => count($cart)], 200);
     }
 }

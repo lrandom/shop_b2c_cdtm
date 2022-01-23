@@ -129,6 +129,7 @@
                     },
                     success: function (data) {
                         alert('Thêm vào giỏ hàng thành công');
+                        getTotalItems(API_TOTAL_ITEMS_IN_CART);
                     }
                 })
             })

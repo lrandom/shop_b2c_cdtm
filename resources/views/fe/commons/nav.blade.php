@@ -25,12 +25,19 @@
         </form>
 
         <div class="text-xl">
-            <a class=" hover:bg-black hover:text-white px-3 py-5 text-black inline-block h-full" href="">
+            <a class=" hover:bg-black hover:text-white px-4 py-5 text-black inline-block h-full" href="">
                 <i class="bi bi-heart"></i></a>
-            <a class=" hover:bg-black hover:text-white px-3 py-5  text-black inline-block h-full" href="">
+            <a class=" hover:bg-black hover:text-white px-4 py-5  text-black inline-block h-full" href="">
                 <i class="bi bi-person"></i></a>
-            <a class=" hover:bg-black hover:text-white px-3 py-5  text-black inline-block h-full" href="">
-                <i class="bi bi-cart"></i></a>
+            <a class="relative hover:bg-black hover:text-white px-4 py-5  text-black inline-block h-full" href="">
+                <i class="bi bi-cart"></i>
+                <div id="total-item-in-cart" class="absolute w-6 h-6
+                top-3 right-2
+                text-xs
+                flex justify-center items-center
+                rounded-full bg-blue-500 text-white">0
+                </div>
+            </a>
         </div>
     </div>
 </nav>
