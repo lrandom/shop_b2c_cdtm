@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller implements ICrud
 {
@@ -27,6 +28,9 @@ class PostController extends Controller implements ICrud
     public function edit($id)
     {
         // TODO: Implement edit() method.
+        $post = Post::find($id);
+        $categories = Category::all();
+        return view('be.post.edit', compact('post', 'categories'));
     }
 
     public function delete($id)
@@ -80,6 +84,55 @@ class PostController extends Controller implements ICrud
     public function doEdit($id, Request $request)
     {
         // TODO: Implement doEdit() method.
+        $title = $request->title;
+        $content = $request->input('content');
+        $shortDescription = $request->short_description;
+        $metaKeyword = $request->meta_keyword;
+        $metaDescription = $request->meta_description;
+        $categoryId = $request->category_id;
+        $type = $request->type;
+
+        try {
+            $post = Post::where('id', $id)->update([
+                'title' => $title,
+                'content' => htmlentities($content),
+                'short_description' => $shortDescription,
+                'meta_keyword' => $metaKeyword,
+                'meta_description' => $metaDescription,
+                'category_id' => $categoryId,
+                'type' => $type,
+                'user_id' => 1
+            ]);
+
+            //thêm ảnh
+            if ($request->hasFile('thumbnail')) {
+                try {
+                    if ($post->thumbnail_path)
+                        Storage::delete($post->thumbnail_path);
+                } catch (\Exception $e) {
+
+                }
+
+                $thumbnail = $request->file('thumbnail');
+                $newFileName = time() . '.' . $thumbnail->getClientOriginalExtension();
+                $thumbnail->storeAs("/images/posts",
+                    $newFileName,
+                    'public');
+                //$post->thumbnail_path = 'storage/images/posts/' . $newFileName;
+                //$post->save();
+                Post::where('id', $id)->update([
+                    'thumbnail_path' => 'storage/images/posts/' . $newFileName
+                ]);
+            }
+
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return redirect()->back()->with('error', "Edit failed");
+        }
+
+        //chuyển hướng về trang  danh sách
+        return redirect()->route('admin.post.list')
+            ->with('success', 'Edit successfully');
     }
 
 }

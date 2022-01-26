@@ -26,7 +26,7 @@
                                 <td>{{$item->id}}</td>
                                 <td>
                                     @if($item->thumbnail_path)
-                                        <img src="{{asset($item->thumbnail_path)}}"/>
+                                        <img width="150" src="{{asset($item->thumbnail_path)}}"/>
                                     @else
                                         <img src="https://via.placeholder.com/150
 
@@ -50,7 +50,6 @@ C/O https://placeholder.com/"/>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
                     {{$list->withQueryString()->links()}}
-
                 </div>
             </div>
         </div>
