@@ -56,13 +56,23 @@ class PostController extends Controller implements ICrud
             ]);
 
             //thêm ảnh
+            if ($request->hasFile('thumbnail')) {
+                $thumbnail = $request->file('thumbnail');
+                $newFileName = time() .'.'. $thumbnail->getClientOriginalExtension();
+                $thumbnail->storeAs("/images/posts",
+                    $newFileName,
+                    'public');
+                $post->thumbnail_path = 'storage/' . $newFileName;
+                $post->save();
+            }
+
         } catch (\Exception $e) {
-            dd($e->getMessage());
             return redirect()->back()->with('error', "Add failed");
         }
 
         //chuyển hướng về trang  danh sách
-        return redirect()->route('admin.post.list')->with('success', 'Add successfully');
+        return redirect()->route('admin.post.list')
+            ->with('success', 'Add successfully');
     }
 
     public function doEdit($id, Request $request)

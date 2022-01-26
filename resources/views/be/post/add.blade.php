@@ -8,7 +8,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form method="post" action="{{route('admin.post.doAdd')}}">
+                <form method="post" enctype="multipart/form-data" action="{{route('admin.post.doAdd')}}">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
