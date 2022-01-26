@@ -74,6 +74,13 @@
                                 <option value="2">Special News</option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Tag</label>
+                                <input type="text" name="tags" class="form-control"/>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
 
@@ -93,4 +100,16 @@
         <li class="breadcrumb-item"><a href="{{route('admin.post.list')}}">Post</a></li>
         <li class="breadcrumb-item active">Add</li>
     </ol>
+@endsection
+
+@section('script')
+    <script src="{{asset('be/tag-input/js/jquery.amsify.suggestags.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('be/tag-input/css/amsify.suggestags.css')}}"/>
+    <script type="text/javascript">
+        $('input[name="tags"]').amsifySuggestags({
+            suggestionsAction: {
+                url: '{{route('api.tags.search')}}'
+            }
+        });
+    </script>
 @endsection

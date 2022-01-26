@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/tags', function (Request $request) {
+    $tags = Tag::where('name', 'LIKE', "%{$request->term}%")->get();
+    $newTags = $tags->map(function ($item) {
+        return [
+            'tag' => $item->name,
+            'value' => $item->id
+        ];
+    });
+    return response()->json([
+        'suggestions' => $newTags,
+    ]);
+})->name('api.tags.search');
