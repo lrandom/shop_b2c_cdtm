@@ -13,6 +13,8 @@ class PostController extends Controller implements ICrud
     public function index()
     {
         // TODO: Implement index() method.
+        $list = Post::orderBy('id', 'DESC')->paginate(10);
+        return view('be.post.index', compact('list'));
     }
 
     public function add()
@@ -58,11 +60,11 @@ class PostController extends Controller implements ICrud
             //thêm ảnh
             if ($request->hasFile('thumbnail')) {
                 $thumbnail = $request->file('thumbnail');
-                $newFileName = time() .'.'. $thumbnail->getClientOriginalExtension();
+                $newFileName = time() . '.' . $thumbnail->getClientOriginalExtension();
                 $thumbnail->storeAs("/images/posts",
                     $newFileName,
                     'public');
-                $post->thumbnail_path = 'storage/' . $newFileName;
+                $post->thumbnail_path = 'storage/images/posts/' . $newFileName;
                 $post->save();
             }
 

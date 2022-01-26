@@ -12,7 +12,11 @@
                         <thead>
                         <tr>
                             <th style="width: 10px">#</th>
-                            <th>Name</th>
+                            <th>
+                                Thumbnail
+                            </th>
+                            <th>Title</th>
+                            <th>Short Description</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -20,12 +24,22 @@
                         @foreach($list as $item)
                             <tr>
                                 <td>{{$item->id}}</td>
-                                <td>{{$item->name}}</td>
+                                <td>
+                                    @if($item->thumbnail_path)
+                                        <img src="{{asset($item->thumbnail_path)}}"/>
+                                    @else
+                                        <img src="https://via.placeholder.com/150
+
+C/O https://placeholder.com/"/>
+                                    @endif
+                                </td>
+                                <td>{{$item->title}}</td>
+                                <td>{{$item->short_description}}</td>
                                 <td>
                                     <a class="btn btn-warning"
-                                       href="{{route('admin.category.edit',['id'=>$item->id])}}">Edit</a>
+                                       href="{{route('admin.post.edit',['id'=>$item->id])}}">Edit</a>
                                     <a class="btn btn-danger"
-                                       href="{{route('admin.category.delete',['id'=>$item->id])}}"
+                                       href="{{route('admin.post.delete',['id'=>$item->id])}}"
                                        onclick="return confirm('Are you you want to delete this ?')" href="">Delete</a>
                                 </td>
                             </tr>
@@ -35,7 +49,8 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                    {{$list->links()}}
+                    {{$list->withQueryString()->links()}}
+
                 </div>
             </div>
         </div>
@@ -44,7 +59,7 @@
 @section('bread-crumb')
     <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="#">Admin</a></li>
-        <li class="breadcrumb-item"><a href="{{route('admin.category.list')}}">Category</a></li>
+        <li class="breadcrumb-item"><a href="{{route('admin.post.list')}}">Category</a></li>
         <li class="breadcrumb-item active">List</li>
     </ol>
 @endsection
