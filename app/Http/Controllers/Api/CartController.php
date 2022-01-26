@@ -110,4 +110,20 @@ class CartController extends Controller
             ? $_SESSION[self::SESSION_CART] : [];
         return response()->json(['total_items' => count($cart)], 200);
     }
+
+    public function deleteItem(Request $request)
+    {
+        $deleteItem = $request->id;
+        $cart = isset($_SESSION[self::SESSION_CART])
+            ? $_SESSION[self::SESSION_CART] : [];
+        $cartCollection = collect($cart);
+        $cart = $cartCollection->filter(function ($item) use ($deleteItem) {
+            if ($item['id'] != $deleteItem) {
+                return $item;
+            }
+        });
+        $cart = $cart->toArray();
+        $_SESSION[self::SESSION_CART] = $cart;
+        return response()->json(['total_items' => count($cart)], 200);
+    }
 }

@@ -19,7 +19,8 @@
 
 @section('script')
     <script>
-        $(document).ready(function () {
+        // $(document).ready(function () {
+        const loadCart = () => {
             $.ajax({
                 url: '{{route('api.cart.get')}}',
                 type: 'GET',
@@ -27,6 +28,7 @@
                 success: function (data) {
                     console.log(data);
                     let cart = data.cart;
+                    $('#cart-table-info').empty();
                     for (let i = 0; i < cart.length; i++) {
                         const item = cart[i];
                         $('#cart-table-info').append(`
@@ -56,13 +58,26 @@
                                     ${item.price * item.quantity}
                                 </div>
 
-                                <div class="border-b border-gray-300 py-5">
+                                <div class="border-b border-gray-300 py-5 btn-delete" data-id="${item.id}">
                                     <button><i class="bi bi-trash"></i> Delete</button>
                                 </div>
 `);
                     }
+
+                    $('.btn-delete').click(function () {
+                        const deleteId = $(this).attr('data-id');
+                        $.ajax({
+                            url: "{{ route('api.cart.delete')}}" + "?id=" + deleteId,
+                            success: function () {
+                                loadCart();
+                            }
+                        })
+                    });
                 }
             })
-        });
+        }
+        // });
+
+        loadCart();
     </script>
 @endsection

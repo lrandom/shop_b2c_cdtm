@@ -22,10 +22,11 @@ Route::middleware('auth:api')->get('/user',
 Route::prefix('cart')->group(function () {
     Route::post('add', [\App\Http\Controllers\Api\CartController::class, 'addToCart'])
         ->name('api.cart.add');
-
     Route::get('get', [\App\Http\Controllers\Api\CartController::class, 'getCart'])
         ->name('api.cart.get');
     Route::get('total-items', [\App\Http\Controllers\Api\CartController::class, 'getTotalItems'])
         ->name('api.cart.total-items');
+    Route::get('delete', [\App\Http\Controllers\Api\CartController::class, 'deleteItem'])
+        ->name('api.cart.delete');
 });
 
