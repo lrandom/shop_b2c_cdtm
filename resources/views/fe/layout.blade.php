@@ -30,6 +30,12 @@
 
 </div>
 
+<script>
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+</script>
 <script src="{{asset('fe/js/cart.js')}}"></script>
 <script>
     const API_TOTAL_ITEMS_IN_CART = "{{route('api.cart.total-items')}}";
@@ -37,7 +43,6 @@
 </script>
 @section('script')
 @show
-
 
 </body>
 </html>

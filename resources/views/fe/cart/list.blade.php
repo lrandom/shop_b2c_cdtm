@@ -10,20 +10,33 @@
         </div>
 
         <div class="grid grid-cols-5 p-5 border" id="cart-table-info">
-
-
         </div>
+
+        <div class="float-right">
+            <ul>
+                <li><strong>SubTotal: </strong>
+                    <span class="sub-total"></span>
+
+                </li>
+                <li><strong>Tax:</strong>
+                    <span class="tax"></span>
+                </li>
+                <li><strong>Total Price:</strong>
+                    <span class="total-price"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="clear-both"></div>
     </div>
+
+
 
 @endsection
 
 @section('script')
     <script>
         // $(document).ready(function () {
-        const formatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        });
+
         const loadCart = () => {
             $.ajax({
                 url: '{{route('api.cart.get')}}',
@@ -42,7 +55,7 @@
                                 </div>
 
                                 <div class="border-b border-gray-300 py-5">
-                                  ${ formatter.format(item.price)}
+                                  ${formatter.format(item.price)}
                                 </div>
 
                                 <div class="border-b border-gray-300 py-5">
@@ -59,7 +72,7 @@
                                 </div>
 
                                 <div class="border-b border-gray-300 py-5">
-                                    ${item.price * item.quantity}
+                                    ${formatter.format(item.price * item.quantity)}
                                 </div>
 
                                 <div class="border-b border-gray-300 py-5 btn-delete" data-id="${item.id}">

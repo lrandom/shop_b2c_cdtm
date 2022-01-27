@@ -108,7 +108,29 @@ class CartController extends Controller
     {
         $cart = isset($_SESSION[self::SESSION_CART])
             ? $_SESSION[self::SESSION_CART] : [];
-        return response()->json(['total_items' => count($cart)], 200);
+
+        $calcPriceInCart = $this->calcPriceInCart();
+        return response()->json([
+            'total_items' => count($cart),
+            'price_in_cart' => $calcPriceInCart
+        ], 200);
+    }
+
+    public function calcPriceInCart()
+    {
+        $cart = isset($_SESSION[self::SESSION_CART])
+            ? $_SESSION[self::SESSION_CART] : [];
+        $subTotal = 0;
+        foreach ($cart as $item) {
+            $subTotal += $item['price'] * $item['quantity'];
+        }
+        $tax = ($subTotal * 10 / 100);
+        $totalPrice = $subTotal + $tax;
+        return [
+            'sub_total' => $subTotal,
+            'tax' => $tax,
+            'total_price' => $totalPrice
+        ];
     }
 
     public function deleteItem(Request $request)
