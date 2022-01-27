@@ -28,5 +28,7 @@ Route::prefix('cart')->group(function () {
         ->name('api.cart.total-items');
     Route::get('delete', [\App\Http\Controllers\Api\CartController::class, 'deleteItem'])
         ->name('api.cart.delete');
+    Route::get('update-quantity', [\App\Http\Controllers\Api\CartController::class, 'updateQuantity'])
+        ->name('api.cart.update_quantity');
 });
 

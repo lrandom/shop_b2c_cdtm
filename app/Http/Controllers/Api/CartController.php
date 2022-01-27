@@ -126,4 +126,22 @@ class CartController extends Controller
         $_SESSION[self::SESSION_CART] = $cart;
         return response()->json(['total_items' => count($cart)], 200);
     }
+
+    public function updateQuantity(Request $request)
+    {
+        $id = $request->id;
+        $quantity = $request->quantity;
+        $cart = isset($_SESSION[self::SESSION_CART])
+            ? $_SESSION[self::SESSION_CART] : [];
+        $cartCollection = collect($cart);
+        $cart = $cartCollection->map(function ($item) use ($id, $quantity) {
+            if ($item['id'] == $id) {
+                $item['quantity'] = $item['quantity'] + $quantity;
+            }
+            return $item;
+        });
+        $cart = $cart->toArray();
+        $_SESSION[self::SESSION_CART] = $cart;
+        return response()->json(['total_items' => count($cart)], 200);
+    }
 }
