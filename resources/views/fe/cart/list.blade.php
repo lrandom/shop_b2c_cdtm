@@ -28,7 +28,7 @@
 
             <br>
 
-            <a href="" class="bg-black text-white font-bold px-5 py-3">
+            <a href="{{route('fe.checkout')}}" class="bg-black text-white font-bold px-5 py-3">
                 Checkout
             </a>
         </div>
