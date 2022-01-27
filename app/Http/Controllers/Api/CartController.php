@@ -136,6 +136,9 @@ class CartController extends Controller
         $cartCollection = collect($cart);
         $cart = $cartCollection->map(function ($item) use ($id, $quantity) {
             if ($item['id'] == $id) {
+                if ($item['quantity'] == 1 && $quantity == -1) {
+                    return $item;
+                }
                 $item['quantity'] = $item['quantity'] + $quantity;
             }
             return $item;
