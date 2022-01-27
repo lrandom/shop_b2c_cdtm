@@ -169,4 +169,5 @@ class CartController extends Controller
         $_SESSION[self::SESSION_CART] = $cart;
         return response()->json(['total_items' => count($cart)], 200);
     }
+
 }

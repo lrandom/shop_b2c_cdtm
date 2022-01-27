@@ -25,10 +25,17 @@
                     <span class="total-price"></span>
                 </li>
             </ul>
+
+            <br>
+
+            <a href="" class="bg-black text-white font-bold px-5 py-3">
+                Checkout
+            </a>
         </div>
         <div class="clear-both"></div>
-    </div>
 
+
+    </div>
 
 
 @endsection

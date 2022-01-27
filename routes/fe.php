@@ -7,3 +7,5 @@ Route::get('/category/{id}', [\App\Http\Controllers\HomeController::class, 'cate
 Route::get('/search', [\App\Http\Controllers\HomeController::class, 'search'])->name('fe.search');
 Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'detail'])->name('fe.product.detail');
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'list'])->name('fe.cart');
+
+Route::get('/checkout', [\App\Http\Controllers\OrderController::class, 'checkout'])->name('fe.checkout');
