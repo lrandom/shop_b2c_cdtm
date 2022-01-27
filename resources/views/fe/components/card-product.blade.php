@@ -24,8 +24,8 @@ C/O https://placeholder.com/"
                 </a>
             </div>
             <div>
-                <span class="text-gray-400 line-through">300$</span>
-                <span class="text-red-500">300$</span>
+                <span class="text-gray-400 line-through">{{\Akaunting\Money\Money::USD($product->price,true)}}</span>
+                <span class="text-red-500">{{\Akaunting\Money\Money::USD($product->price,true)}}</span>
             </div>
             <p class="text-sm">{{$product->short_description}}</p>
         </div>

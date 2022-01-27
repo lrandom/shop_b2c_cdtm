@@ -49,7 +49,7 @@ C/O https://placeholder.com/"
                                     @endif
                                 </td>
                                 <td>{{$item->name}}</td>
-                                <td>{{$item->price}}</td>
+                                <td>{{\Akaunting\Money\Money::USD($item->price,true)}}</td>
                                 <td>
                                     <span class="badge badge-primary">
                                              @if($item->category)

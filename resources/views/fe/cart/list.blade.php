@@ -20,6 +20,10 @@
 @section('script')
     <script>
         // $(document).ready(function () {
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
         const loadCart = () => {
             $.ajax({
                 url: '{{route('api.cart.get')}}',
@@ -38,7 +42,7 @@
                                 </div>
 
                                 <div class="border-b border-gray-300 py-5">
-                                    ${item.price}
+                                  ${ formatter.format(item.price)}
                                 </div>
 
                                 <div class="border-b border-gray-300 py-5">
