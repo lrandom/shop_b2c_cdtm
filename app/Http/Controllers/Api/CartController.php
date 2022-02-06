@@ -172,4 +172,9 @@ class CartController extends Controller
         return response()->json(['total_items' => count($cart)], 200);
     }
 
+    public function clearCart()
+    {
+        $_SESSION[self::SESSION_CART] = [];
+        return response()->json(['total_items' => 0], 200);
+    }
 }
