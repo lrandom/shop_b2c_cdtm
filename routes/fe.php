@@ -8,11 +8,10 @@ Route::get('/search', [\App\Http\Controllers\HomeController::class, 'search'])->
 Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'detail'])->name('fe.product.detail');
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'list'])->name('fe.cart');
 
-Route::
-middleware('auth')->get('/checkout', [\App\Http\Controllers\OrderController::class, 'checkout'])
-    ->name('fe.checkout');
-Route::
-middleware('auth')->post('/do-checkout', [\App\Http\Controllers\OrderController::class, 'doCheckout'])
+Route::get('/checkout', [\App\Http\Controllers\OrderController::class, 'checkout'])
+    ->middleware(['auth'])->name('fe.checkout');
+Route::post('/do-checkout', [\App\Http\Controllers\OrderController::class, 'doCheckout'])
+    ->middleware(['auth'])
     ->name('fe.do-checkout');
 
 Route::get('/checkout/success/{order_id}', [
