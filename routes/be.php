@@ -94,6 +94,14 @@ Route::prefix('/admin')->group(function () {
             ->name('admin.brand.delete');
     });
 
+    Route::prefix('/order')->group(function () {
+        Route::get('/list', [\App\Http\Controllers\Admin\OrderController::class,
+            'index'])->name('admin.order.list');
+        Route::get('/detail/{id}', [\App\Http\Controllers\Admin\OrderController::class,
+            'detail'])->name('admin.order.detail');
+    });
+
+
 });
 
 
