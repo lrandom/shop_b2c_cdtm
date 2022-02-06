@@ -19,4 +19,18 @@ class Post extends Model
         'type',
         'user_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class,
+            'tag_posts',
+            'post_id',
+            'tag_id');
+    }
+
 }

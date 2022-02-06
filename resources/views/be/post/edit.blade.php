@@ -8,15 +8,17 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form method="post" enctype="multipart/form-data" action="{{route('admin.post.doEdit',['id'=>$post->id])}}">
+                <form method="post" enctype="multipart/form-data"
+                      action="{{route('admin.post.doEdit',['id'=>$post->id])}}">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
 
                             @if($post->thumbnail_path)
-                                <img src="{{asset($post->thumbnail_path)}}" alt=""/>
+                                <img src="{{asset($post->thumbnail_path)}}" width="120" alt=""/>
                             @endif
 
+                            <br>
                             <label for="exampleInputFile">Thumbnail</label>
                             <div class="input-group">
                                 <div class="custom-file">
@@ -93,6 +95,15 @@
                                 </option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <input type="hidden" id="tags-id" values="{{$tagsId}}"/>
+                            <div class="form-group">
+                                <label>Tag</label>
+                                <input type="text"
+                                       name="tags" class="form-control"/>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
 
@@ -111,4 +122,25 @@
         <li class="breadcrumb-item"><a href="{{route('admin.post.list')}}">Post</a></li>
         <li class="breadcrumb-item active">Edit</li>
     </ol>
+@endsection
+
+@section('script')
+    <script src="{{asset('be/tag-input/js/jquery.amsify.suggestags.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('be/tag-input/css/amsify.suggestags.css')}}"/>
+    <script type="text/javascript">
+        const tagsId = $('#tags-id').val().split(',');
+        $('input[name="tags"]').amsifySuggestags({
+            suggestionsAction: {
+                url: '{{route('api.tags.search')}}'
+            },
+            afterAdd: function (value) {
+                tagsId.push(value);
+                $('#tags-id').val(tagsId.join(','));
+            },
+            afterRemove: function (value) {
+                const tags = $('.input[name="tags"]').val();
+                alert(tags);
+            },
+        });
+    </script>
 @endsection

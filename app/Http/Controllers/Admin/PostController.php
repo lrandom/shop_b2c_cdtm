@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\TagPost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +31,19 @@ class PostController extends Controller implements ICrud
         // TODO: Implement edit() method.
         $post = Post::find($id);
         $categories = Category::all();
-        return view('be.post.edit', compact('post', 'categories'));
+        $tags = $post->tags;
+        // dd($tags);
+        $tagsName = $tags->map(function ($item) {
+            return $item->name;
+        })->toArray();
+        $tagsName = implode(',', $tagsName);
+
+        $tagsId = $tags->map(function ($item) {
+            return $item->id;
+        })->toArray();
+        $tagsId = implode(',', $tagsId);
+        return view('be.post.edit', compact('post',
+            'categories', 'tagsName','tagsId'));
     }
 
     public function delete($id)
@@ -48,6 +61,7 @@ class PostController extends Controller implements ICrud
         $metaDescription = $request->meta_description;
         $categoryId = $request->category_id;
         $type = $request->type;
+        $tagsIds = $request->tags;//1,2,3,4,5-> [1,2,3,4,5]
 
         try {
             $post = Post::create([
@@ -70,6 +84,15 @@ class PostController extends Controller implements ICrud
                     'public');
                 $post->thumbnail_path = 'storage/images/posts/' . $newFileName;
                 $post->save();
+            }
+
+            //chèn tag vào tag_posts
+            $tagsIds = explode(',', $tagsIds);
+            foreach ($tagsIds as $tagId) {
+                TagPost::create([
+                    'post_id' => $post->id,
+                    'tag_id' => $tagId
+                ]);
             }
 
         } catch (\Exception $e) {
