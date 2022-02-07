@@ -96,6 +96,7 @@ class PostController extends Controller implements ICrud
             }
 
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return redirect()->back()->with('error', "Add failed");
         }
 
