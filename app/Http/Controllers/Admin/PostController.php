@@ -43,7 +43,7 @@ class PostController extends Controller implements ICrud
         })->toArray();
         $tagsId = implode(',', $tagsId);
         return view('be.post.edit', compact('post',
-            'categories', 'tagsName','tagsId'));
+            'categories', 'tagsName', 'tagsId'));
     }
 
     public function delete($id)
@@ -55,7 +55,7 @@ class PostController extends Controller implements ICrud
     {
         // TODO: Implement doAdd() method.
         $title = $request->title;
-        $content = $request->input('content');
+        $content = htmlentities($request->input('content'));
         $shortDescription = $request->short_description;
         $metaKeyword = $request->meta_keyword;
         $metaDescription = $request->meta_description;
@@ -108,7 +108,7 @@ class PostController extends Controller implements ICrud
     {
         // TODO: Implement doEdit() method.
         $title = $request->title;
-        $content = $request->input('content');
+        $content = htmlentities($request->input('content'));
         $shortDescription = $request->short_description;
         $metaKeyword = $request->meta_keyword;
         $metaDescription = $request->meta_description;
@@ -156,6 +156,16 @@ class PostController extends Controller implements ICrud
         //chuyển hướng về trang  danh sách
         return redirect()->route('admin.post.list')
             ->with('success', 'Edit successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->query('query');
+        $list = Post::where('title', 'like', '%' . $query . '%')
+            ->orWhere('content', 'like', '%' . $query . '%')
+            ->orWhere('short_description', 'like', '%' . $query . '%')
+            ->paginate(10);
+        return view('be.post.index', compact('list'));
     }
 
 }

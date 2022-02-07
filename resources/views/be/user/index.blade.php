@@ -5,6 +5,19 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Bordered Table</h3>
+                    <form class="form-inline" style="float:right" action="{{route('admin.user.search')}}">
+                        <div class="input-group">
+                            <input class="form-control"
+                                   type="search"
+                                   name="query"
+                                   placeholder="Type anything" aria-label="Search">
+                            <div class="input-group-append bg-primary">
+                                <button class="btn btn-sidebar">
+                                    <i class="fas fa-search fa-fw text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

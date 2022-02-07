@@ -5,6 +5,7 @@
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Edit Post</h3>
+
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -41,7 +42,7 @@
                         <div class="form-group">
                             <label>Content</label>
                             <textarea name="content"
-                                      class="form-control"
+                                      class="form-control txt-content"
                                       placeholder="Enter content">{!! $post->content !!}</textarea>
 
                         </div>
@@ -125,6 +126,7 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{asset('be/tag-input/js/jquery.amsify.suggestags.js')}}"></script>
     <link rel="stylesheet" href="{{asset('be/tag-input/css/amsify.suggestags.css')}}"/>
     <script type="text/javascript">
@@ -139,8 +141,12 @@
             },
             afterRemove: function (value) {
                 const tags = $('.input[name="tags"]').val();
-                alert(tags);
-            },
+            }
         });
+
+        tinymce.init({
+            selector: '.txt-content',
+            height: '500'
+        })
     </script>
 @endsection

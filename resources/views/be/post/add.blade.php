@@ -26,14 +26,14 @@
 
 
                         <div class="form-group">
-                            <label>Title</label>
+             ˙               <label>Title</label>
                             <input type="text" name="title" class="form-control" placeholder="Enter title">
                         </div>
 
                         <div class="form-group">
                             <label>Content</label>
                             <textarea name="content"
-                                      class="form-control"
+                                      class="form-control txt-content"
                                       placeholder="Enter content"></textarea>
 
                         </div>
@@ -103,6 +103,7 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{asset('be/tag-input/js/jquery.amsify.suggestags.js')}}"></script>
     <link rel="stylesheet" href="{{asset('be/tag-input/css/amsify.suggestags.css')}}"/>
     <script type="text/javascript">
@@ -111,5 +112,10 @@
                 url: '{{route('api.tags.search')}}'
             }
         });
+
+        tinymce.init({
+            selector: '.txt-content',
+            height: '500'
+        })
     </script>
 @endsection
