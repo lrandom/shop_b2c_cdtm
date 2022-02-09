@@ -96,9 +96,11 @@ Route::prefix('/admin')->group(function () {
 
     Route::prefix('/order')->group(function () {
         Route::get('/list', [\App\Http\Controllers\Admin\OrderController::class,
-            'index'])->name('admin.order.list');
+            'filter'])->name('admin.order.list');
         Route::get('/detail/{id}', [\App\Http\Controllers\Admin\OrderController::class,
             'detail'])->name('admin.order.detail');
+        Route::get('/change-status/{id}/{status}', [\App\Http\Controllers\Admin\OrderController::class, 'changeStatus',
+        ])->name('admin.order.change-status');
     });
 
 

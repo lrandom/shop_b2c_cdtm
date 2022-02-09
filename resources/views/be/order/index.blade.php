@@ -5,6 +5,14 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title"></h3>
+
+                    <div class="float-right" style="display:flex;gap:10px">
+                        <a href="{{route('admin.order.list')}}?status=all">All</a>
+                        <a href="{{route('admin.order.list')}}?status=pending">Pending</a>
+                        <a href="{{route('admin.order.list')}}?status=processing">Processing</a>
+                        <a href="{{route('admin.order.list')}}?status=success">Success</a>
+                        <a href="{{route('admin.order.list')}}?status=canceled">Canceled</a>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -58,10 +66,14 @@
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <div class="dropdown-menu" role="menu" style="">
-                                            <a class="dropdown-item" href="#">Pending</a>
-                                            <a class="dropdown-item" href="#">Processing</a>
-                                            <a class="dropdown-item" href="#">Succeed</a>
-                                            <a class="dropdown-item" href="#">Cancel</a>
+                                            <a class="dropdown-item"
+                                               href="{{route('admin.order.change-status',['id'=>$item->id,'status'=>1])}}">Pending</a>
+                                            <a class="dropdown-item"
+                                               href="{{route('admin.order.change-status',['id'=>$item->id,'status'=>2])}}">Processing</a>
+                                            <a class="dropdown-item"
+                                               href="{{route('admin.order.change-status',['id'=>$item->id,'status'=>3])}}">Succeed</a>
+                                            <a class="dropdown-item"
+                                               href="{{route('admin.order.change-status',['id'=>$item->id,'status'=>4])}}">Cancel</a>
                                         </div>
                                     </div>
                                 </td>

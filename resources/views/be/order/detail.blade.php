@@ -75,18 +75,23 @@
             </div>
             <div class="float-right">
                 @if($order->status==1)
-                    <a type="button" class="btn btn-primary float-right">
+                    <a type="button"
+                       href="{{route('admin.order.change-status',['id'=>$order->id,'status'=>2])}}"
+                       class="btn btn-primary float-right">
                         Processing
                     </a>
                 @endif
 
                 @if($order->status==2)
-                    <a type="button" class="btn btn-success float-right">
+                    <a type="button" class="btn btn-success float-right"
+                       href="{{route('admin.order.change-status',['id'=>$order->id,'status'=>3])}}">
                         Success
                     </a>
                 @endif
 
-                <a type="button" class="btn btn-danger float-right">
+                <a type="button" class="btn btn-danger float-right"
+                   href="{{route('admin.order.change-status',['id'=>$order->id,'status'=>4])}}"
+                >
                     Cancel
                 </a>
 
