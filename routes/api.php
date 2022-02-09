@@ -26,9 +26,9 @@ Route::prefix('cart')->group(function () {
         ->name('api.cart.get');
     Route::get('total-items', [\App\Http\Controllers\Api\CartController::class, 'getTotalItems'])
         ->name('api.cart.total-items');
-    Route::get('delete', [\App\Http\Controllers\Api\CartController::class, 'deleteItem'])
+    Route::post('delete', [\App\Http\Controllers\Api\CartController::class, 'deleteItem'])
         ->name('api.cart.delete');
-    Route::get('update-quantity', [\App\Http\Controllers\Api\CartController::class, 'updateQuantity'])
+    Route::post('update-quantity', [\App\Http\Controllers\Api\CartController::class, 'updateQuantity'])
         ->name('api.cart.update_quantity');
 });
 
