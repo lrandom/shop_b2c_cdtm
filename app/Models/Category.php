@@ -18,8 +18,9 @@ class Category extends Model
         return $this->hasOne(Post::class);
     }
 
-    public function news_limit()
+    public function posts()
     {
-        return $this->hasMany(Post::class)->limit(4);
+        return $this->hasMany(Post::class);
     }
+
 }

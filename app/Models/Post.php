@@ -33,4 +33,9 @@ class Post extends Model
             'tag_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
 }

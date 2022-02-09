@@ -11,27 +11,21 @@ class HomeController extends Controller
     public function index()
     {
 
-        $tickerNews = Post::orderBy('created_at', 'desc')->limit(5)->get();
-        $firstNews = Post::orderBy('created_at', 'desc')->where('category_id',
-            4)->first();
-        $secondNews = Post::orderBy('created_at', 'desc')->where('category_id',
-            4)->first();
-        $thirdNews = Post::orderBy('created_at', 'desc')->where('category_id',
-            4)->first();
-        $fourNews = Post::orderBy('created_at', 'desc')->where('category_id',
-            4)->first();
+        $fiveCategories = Category::limit(5)->get();
+        $topStoriesNews = Post::where('type', 2)
+            ->orderBy('created_at', 'desc')->limit(4)->get();
+        $recentNews = Post::orderBy('created_at', 'desc')->limit(3)->get();
+        $bestStories = Post::orderBy('view_count', 'desc')->limit(3)->get();
+        return view('fe.home', compact('fiveCategories',
+            'topStoriesNews',
+            'recentNews'));
+    }
 
-
-        $firstCategory = Category::where('id', 4)->first();
-        $secondCategory = Category::where('id', 8)->first();//computer
-        return view('fe.home', compact('tickerNews',
-            'firstNews',
-            'secondNews',
-            'thirdNews',
-            'fourNews',
-            'firstCategory',
-            'secondCategory'
-        ));
+    public function blogList($id)
+    {
+        $category = Category::find($id);
+        $posts = Post::where('category_id',$id)->orderBy('created_at','desc')->paginate(10);
+        return view('fe.blog-list', compact('category', 'posts'));
     }
 
     public function about()
