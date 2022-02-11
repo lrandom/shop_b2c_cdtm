@@ -24,8 +24,7 @@ class CartController extends Controller
         $quantity = $request->quantity;
         //$variantValues = $request->variantValues;
         $variantInfos = $request->variant_infos;
-        //dd($variantInfos);
-        if ($variantInfos) {
+        if ($variantInfos != null) {
             $variantInfos = $this->removeVariantAssocKey($variantInfos);
         }
         //$variantInfos = $tmpVariantsInfo;
@@ -40,9 +39,11 @@ class CartController extends Controller
         $cartCollect = collect($cart);
 
 
-        $simpleVariantInfos = $this->makeVariantInfosSimple($variantInfos);
-
+        if ($variantInfos) {
+            $simpleVariantInfos = $this->makeVariantInfosSimple($variantInfos);
+        }
         $cartItem = false;
+        //dd($request->variant_infos);
         if ($request->variant_infos) {
             $cartItem = $cartCollect->first(function ($item) use ($id, $simpleVariantInfos) {
                 $simpleVariantInfosInCart = $this->makeVariantInfosSimple($item['variantInfos']);
@@ -149,10 +150,16 @@ class CartController extends Controller
             ? $_SESSION[self::SESSION_CART] : [];
         $cartCollection = collect($cart);
         $cart = $cartCollection->filter(function ($item) use ($deleteItem, $variantInfos) {
-            if ($item['id'] != $deleteItem || count(array_diff_assoc(
-                    $this->makeVariantInfosSimple($variantInfos)
-                    , $this->makeVariantInfosSimple($item['variantInfos']))) != 0) {
-                return $item;
+            if ($variantInfos) {
+                if ($item['id'] != $deleteItem || count(array_diff_assoc(
+                        $this->makeVariantInfosSimple($variantInfos)
+                        , $this->makeVariantInfosSimple($item['variantInfos']))) != 0) {
+                    return $item;
+                }
+            } else {
+                if ($item['id'] != $deleteItem) {
+                    return $item;
+                }
             }
         });
         $cart = $cart->toArray();
@@ -168,15 +175,28 @@ class CartController extends Controller
         $cart = isset($_SESSION[self::SESSION_CART])
             ? $_SESSION[self::SESSION_CART] : [];
         $cartCollection = collect($cart);
+
+        //dd($variantInfos);
+
         $cart = $cartCollection->map(function ($item) use ($id, $quantity, $variantInfos) {
-            if ($item['id'] == $id && count(array_diff_assoc(
-                    $this->makeVariantInfosSimple($variantInfos)
-                    , $this->makeVariantInfosSimple($item['variantInfos']))) == 0
-            ) {
-                if ($item['quantity'] == 1 && $quantity == -1) {
-                    return $item;
+
+            if ($variantInfos != null) {
+                if ($item['id'] == $id && count(array_diff_assoc(
+                        $this->makeVariantInfosSimple($variantInfos)
+                        , $this->makeVariantInfosSimple($item['variantInfos']))) == 0
+                ) {
+                    if ($item['quantity'] == 1 && $quantity == -1) {
+                        return $item;
+                    }
+                    $item['quantity'] = $item['quantity'] + $quantity;
                 }
-                $item['quantity'] = $item['quantity'] + $quantity;
+            } else {
+                if ($item['id'] == $id) {
+                    if ($item['quantity'] == 1 && $quantity == -1) {
+                        return $item;
+                    }
+                    $item['quantity'] = $item['quantity'] + $quantity;
+                }
             }
             return $item;
         });
