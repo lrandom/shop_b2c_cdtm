@@ -294,5 +294,9 @@
 <script src="{{asset('fe/assets/js/main.js')}}"></script>
 </body>
 
+@section('script')
+
+@show
+
 <!-- Mirrored from www.s7template.com/tf/kargill/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Sep 2020 08:57:19 GMT -->
 </html>

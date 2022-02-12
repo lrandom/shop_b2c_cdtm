@@ -68,30 +68,30 @@
 
     <!-- top-story area Start -->
     @if(!$topStoriesNews->isEmpty())
-    <div class="top-story-area pd-top-70 pd-bottom-50">
-        <div class="container">
-            <div class="section-title">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h5 class="title">Top Stories</h5>
-                    </div>
-                    <div class="col-sm-6 text-sm-right align-self-center">
-                        <a class="see-all-btn float-sm-right" href="#">View all</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @foreach($topStoriesNews as $topStoriesNew)
-                    <div class="col-lg-3 col-md-6">
-                        <div class="top-story-wrap">
-                            <h6><a href="#">{{$topStoriesNew->title}}</a></h6>
-                            <p>11 Jun, 2020 | By {{$topStoriesNew->user->full_name}}</p>
+        <div class="top-story-area pd-top-70 pd-bottom-50">
+            <div class="container">
+                <div class="section-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5 class="title">Top Stories</h5>
+                        </div>
+                        <div class="col-sm-6 text-sm-right align-self-center">
+                            <a class="see-all-btn float-sm-right" href="#">View all</a>
                         </div>
                     </div>
-                @endforeach
+                </div>
+                <div class="row">
+                    @foreach($topStoriesNews as $topStoriesNew)
+                        <div class="col-lg-3 col-md-6">
+                            <div class="top-story-wrap">
+                                <h6><a href="#">{{$topStoriesNew->title}}</a></h6>
+                                <p>11 Jun, 2020 | By {{$topStoriesNew->user->full_name}}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
     @endif
     <!-- top-story area End -->
 
@@ -120,21 +120,23 @@
                             <div class="col-md-8 align-self-center text-left text-md-right">
                                 <div class="top-news-tab d-inline-block">
                                     <ul class="nav nav-tabs">
-                                {{--        <li><a class="active" data-toggle="tab" href="#news1">Travel</a>
-                                        </li>
-                                        <li><a data-toggle="tab" href="#news2">Foods</a>
-                                        </li>
-                                        <li><a data-toggle="tab" href="#news3">News</a>
-                                        </li>
-                                        <li><a data-toggle="tab" href="#news4">Beauty</a>
-                                        </li>
-                                        <li><a data-toggle="tab" href="#news5">Life Style</a>
-                                        </li>
-                                        <li><a data-toggle="tab" href="#news6">Music</a>
-                                        </li>--}}
+                                        {{--        <li><a class="active" data-toggle="tab" href="#news1">Travel</a>
+                                                </li>
+                                                <li><a data-toggle="tab" href="#news2">Foods</a>
+                                                </li>
+                                                <li><a data-toggle="tab" href="#news3">News</a>
+                                                </li>
+                                                <li><a data-toggle="tab" href="#news4">Beauty</a>
+                                                </li>
+                                                <li><a data-toggle="tab" href="#news5">Life Style</a>
+                                                </li>
+                                                <li><a data-toggle="tab" href="#news6">Music</a>
+                                                </li>--}}
 
                                         @foreach($sixCategories as $sixCategory)
-                                            <li><a data-toggle="tab" href="#news6">{{$sixCategory->name}}</a>
+                                            <li>
+                                                <a class="tab-item" data-toggle="tab"
+                                                   href="#news6">{{$sixCategory->name}}</a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -145,474 +147,474 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="top-news-tab-content tab-content">
-                                <div id="news1" class="tab-pane fade active show">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/12.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Best fashion model in 2020 get idea from there</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/13.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Doing everything on time is the habit of successful
-                                                            people</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/14.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">We need green forests to survive healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/15.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Good Design Can Create a Beautiful nterface For
-                                                            Everyone.</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/16.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Be careful not to eat fatty foods 10 tips for
-                                                            woman</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/17.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">I think to Change our Attention Make For Valuable
-                                                            Face.</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="news2" class="tab-pane fade show">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/12.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Best fashion model in 2020 get idea from there</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/13.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Doing everything on time is the habit of successful
-                                                            people</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/14.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">We need green forests to survive healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/15.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Good Design Can Create a Beautiful nterface For
-                                                            Everyone.</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/16.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Be careful not to eat fatty foods 10 tips for
-                                                            woman</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/17.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">I think to Change our Attention Make For Valuable
-                                                            Face.</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="news3" class="tab-pane fade show">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/12.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Best fashion model in 2020 get idea from there</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/13.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Doing everything on time is the habit of successful
-                                                            people</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/14.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">We need green forests to survive healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/15.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Good Design Can Create a Beautiful nterface For
-                                                            Everyone.</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/16.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Be careful not to eat fatty foods 10 tips for
-                                                            woman</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/17.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">I think to Change our Attention Make For Valuable
-                                                            Face.</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="news4" class="tab-pane fade show">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/12.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Best fashion model in 2020 get idea from there</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/13.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Doing everything on time is the habit of successful
-                                                            people</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/14.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">We need green forests to survive healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/15.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Good Design Can Create a Beautiful nterface For
-                                                            Everyone.</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/16.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Be careful not to eat fatty foods 10 tips for
-                                                            woman</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/17.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">I think to Change our Attention Make For Valuable
-                                                            Face.</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="news5" class="tab-pane fade show">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/12.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Best fashion model in 2020 get idea from there</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/13.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Doing everything on time is the habit of successful
-                                                            people</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/14.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">We need green forests to survive healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/15.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Good Design Can Create a Beautiful nterface For
-                                                            Everyone.</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/16.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Be careful not to eat fatty foods 10 tips for
-                                                            woman</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/17.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">I think to Change our Attention Make For Valuable
-                                                            Face.</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="news6" class="tab-pane fade show">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/12.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Best fashion model in 2020 get idea from there</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/13.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Doing everything on time is the habit of successful
-                                                            people</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/14.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">We need green forests to survive healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/15.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Good Design Can Create a Beautiful nterface For
-                                                            Everyone.</a></h6>
-                                                </div>
-                                            </div>
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/16.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">Be careful not to eat fatty foods 10 tips for
-                                                            woman</a>
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="top-post-wrap top-post-wrap-4">
-                                                <div class="thumb">
-                                                    <div class="overlay"></div>
-                                                    <img src="assets/img/post/17.png" alt="img">
-                                                </div>
-                                                <div class="top-post-details">
-                                                    <a class="tag" href="#">Fashion</a>
-                                                    <h6><a href="#">I think to Change our Attention Make For Valuable
-                                                            Face.</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{-- <div id="news1" class="tab-pane fade active show">
+                                     <div class="row">
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/12.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Best fashion model in 2020 get idea from there</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/13.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Doing everything on time is the habit of successful
+                                                             people</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/14.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">We need green forests to survive healthy</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/15.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Good Design Can Create a Beautiful nterface For
+                                                             Everyone.</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/16.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Be careful not to eat fatty foods 10 tips for
+                                                             woman</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/17.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">I think to Change our Attention Make For Valuable
+                                                             Face.</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div id="news2" class="tab-pane fade show">
+                                     <div class="row">
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/12.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Best fashion model in 2020 get idea from there</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/13.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Doing everything on time is the habit of successful
+                                                             people</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/14.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">We need green forests to survive healthy</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/15.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Good Design Can Create a Beautiful nterface For
+                                                             Everyone.</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/16.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Be careful not to eat fatty foods 10 tips for
+                                                             woman</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/17.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">I think to Change our Attention Make For Valuable
+                                                             Face.</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div id="news3" class="tab-pane fade show">
+                                     <div class="row">
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/12.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Best fashion model in 2020 get idea from there</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/13.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Doing everything on time is the habit of successful
+                                                             people</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/14.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">We need green forests to survive healthy</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/15.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Good Design Can Create a Beautiful nterface For
+                                                             Everyone.</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/16.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Be careful not to eat fatty foods 10 tips for
+                                                             woman</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/17.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">I think to Change our Attention Make For Valuable
+                                                             Face.</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div id="news4" class="tab-pane fade show">
+                                     <div class="row">
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/12.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Best fashion model in 2020 get idea from there</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/13.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Doing everything on time is the habit of successful
+                                                             people</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/14.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">We need green forests to survive healthy</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/15.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Good Design Can Create a Beautiful nterface For
+                                                             Everyone.</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/16.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Be careful not to eat fatty foods 10 tips for
+                                                             woman</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/17.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">I think to Change our Attention Make For Valuable
+                                                             Face.</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div id="news5" class="tab-pane fade show">
+                                     <div class="row">
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/12.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Best fashion model in 2020 get idea from there</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/13.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Doing everything on time is the habit of successful
+                                                             people</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/14.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">We need green forests to survive healthy</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/15.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Good Design Can Create a Beautiful nterface For
+                                                             Everyone.</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/16.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Be careful not to eat fatty foods 10 tips for
+                                                             woman</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/17.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">I think to Change our Attention Make For Valuable
+                                                             Face.</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div id="news6" class="tab-pane fade show">
+                                     <div class="row">
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/12.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Best fashion model in 2020 get idea from there</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/13.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Doing everything on time is the habit of successful
+                                                             people</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/14.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">We need green forests to survive healthy</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/15.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Good Design Can Create a Beautiful nterface For
+                                                             Everyone.</a></h6>
+                                                 </div>
+                                             </div>
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/16.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">Be careful not to eat fatty foods 10 tips for
+                                                             woman</a>
+                                                     </h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-6">
+                                             <div class="top-post-wrap top-post-wrap-4">
+                                                 <div class="thumb">
+                                                     <div class="overlay"></div>
+                                                     <img src="assets/img/post/17.png" alt="img">
+                                                 </div>
+                                                 <div class="top-post-details">
+                                                     <a class="tag" href="#">Fashion</a>
+                                                     <h6><a href="#">I think to Change our Attention Make For Valuable
+                                                             Face.</a></h6>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>--}}
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -630,7 +632,8 @@
                                 @foreach($recentNews as $recentNew)
                                     <div class="media-post-wrap-2 media bg-gray shadow-none">
                                         <div class="thumb">
-                                            <img style="width:270px;" src="{{asset($recentNew->thumbnail_path)}}" alt="img">
+                                            <img style="width:270px;" src="{{asset($recentNew->thumbnail_path)}}"
+                                                 alt="img">
                                         </div>
                                         <div class="media-body">
                                             <h6><a href="#">{{$recentNew->title}}</a></h6>
@@ -685,29 +688,30 @@
                                 <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i>Youtube 34k</a></li>
                             </ul>
                         </div>
-                 {{--       <div class="widget widget-post">
-                            <h5 class="widget-title">Top Travel Posts</h5>
-                            <div class="single-widget-post">
-                                <div class="thumb">
-                                    <img src="assets/img/widget/6.png" alt="img">
-                                </div>
-                                <h6>Travel ipsum dolor sit amet, consectetur adipiscing elit aliqua.</h6>
-                            </div>
-                            <div class="single-widget-post">
-                                <div class="thumb">
-                                    <img src="assets/img/widget/5.png" alt="img">
-                                </div>
-                                <h6>A good family aloways wants to learning from the nature & will happy.</h6>
-                            </div>
-                            <a class="load-more-btn" href="#">Load More</a>
-                        </div>--}}
+                        {{--       <div class="widget widget-post">
+                                   <h5 class="widget-title">Top Travel Posts</h5>
+                                   <div class="single-widget-post">
+                                       <div class="thumb">
+                                           <img src="assets/img/widget/6.png" alt="img">
+                                       </div>
+                                       <h6>Travel ipsum dolor sit amet, consectetur adipiscing elit aliqua.</h6>
+                                   </div>
+                                   <div class="single-widget-post">
+                                       <div class="thumb">
+                                           <img src="assets/img/widget/5.png" alt="img">
+                                       </div>
+                                       <h6>A good family aloways wants to learning from the nature & will happy.</h6>
+                                   </div>
+                                   <a class="load-more-btn" href="#">Load More</a>
+                               </div>--}}
 
                         <div class="widget widget-list">
                             <h5 class="widget-title">Best Stories</h5>
                             @foreach($topStoriesNews as $topStoriesNew)
                                 <div class="media-post-wrap media">
                                     <div class="thumb">
-                                        <img style="width:150px" src="{{asset($topStoriesNew->thumbnail_path)}}" alt="img">
+                                        <img style="width:150px" src="{{asset($topStoriesNew->thumbnail_path)}}"
+                                             alt="img">
                                     </div>
                                     <div class="media-body">
                                         <h6><a href="#">{{$topStoriesNew->title}}</a></h6>
@@ -727,7 +731,7 @@
                                 </div>
                             @endforeach
 
-                          {{--  <a class="load-more-btn" href="#">Load More</a>--}}
+                            {{--  <a class="load-more-btn" href="#">Load More</a>--}}
                         </div>
                     </div>
                 </div>
@@ -803,4 +807,22 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $('.tab-item').click(function () {
+            $('.tab-item').removeClass('active');
+            $(this).addClass('active');
+            $('.top-news-tab-content').empty();
+            $.ajax({
+                method: 'get',
+                dataType: 'html',
+                url: '{{route('api.posts.load',['id'=>1])}}',
+                success: function (data) {
+                    $('.top-news-tab-content').append(data);
+                }
+            })
+        });
+    </script>
 @endsection

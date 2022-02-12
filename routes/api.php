@@ -33,3 +33,7 @@ Route::get('/tags', function (Request $request) {
         'suggestions' => $newTags,
     ]);
 })->name('api.tags.search');
+
+Route::get('/posts/{id}', [
+    \App\Http\Controllers\Api\PostController::class, 'loadPosts'
+])->name('api.posts.load');
