@@ -37,3 +37,11 @@ Route::get('/tags', function (Request $request) {
 Route::get('/posts/{id}', [
     \App\Http\Controllers\Api\PostController::class, 'loadPosts'
 ])->name('api.posts.load');
+
+Route::get('/popular-posts/{id}', [
+    \App\Http\Controllers\Api\PostController::class, 'loadPopularPosts'
+])->name('api.posts.load.popular');
+
+Route::get('/recent-posts/{id}', [
+    \App\Http\Controllers\Api\PostController::class, 'loadRecentPosts'
+])->name('api.posts.load.recent');

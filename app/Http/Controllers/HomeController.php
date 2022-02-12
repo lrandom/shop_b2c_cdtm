@@ -27,13 +27,21 @@ class HomeController extends Controller
     public function blogList($id)
     {
         $category = Category::find($id);
+        $topStoriesNews = Post::where('type', 2)
+            ->orderBy('created_at', 'desc')->limit(4)->get();
         $posts = Post::where('category_id',$id)->orderBy('created_at','desc')->paginate(10);
-        return view('fe.blog-list', compact('category', 'posts'));
+        return view('fe.blog-list', compact('category',
+            'posts','topStoriesNews'));
     }
 
-    public function about()
+    public function postDetail($id)
     {
-        return view('about');
+        $post = Post::find($id);
+        $post->view_count = $post->view_count + 1;
+        $post->save();
+        $topStoriesNews = Post::where('type', 2)
+            ->orderBy('created_at', 'desc')->limit(4)->get();
+        return view('fe.detail', compact('post','topStoriesNews'));
     }
 
     public function contact()
