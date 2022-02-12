@@ -120,7 +120,7 @@
                             <div class="col-md-8 align-self-center text-left text-md-right">
                                 <div class="top-news-tab d-inline-block">
                                     <ul class="nav nav-tabs">
-                                        <li><a class="active" data-toggle="tab" href="#news1">Travel</a>
+                                {{--        <li><a class="active" data-toggle="tab" href="#news1">Travel</a>
                                         </li>
                                         <li><a data-toggle="tab" href="#news2">Foods</a>
                                         </li>
@@ -131,7 +131,12 @@
                                         <li><a data-toggle="tab" href="#news5">Life Style</a>
                                         </li>
                                         <li><a data-toggle="tab" href="#news6">Music</a>
-                                        </li>
+                                        </li>--}}
+
+                                        @foreach($sixCategories as $sixCategory)
+                                            <li><a data-toggle="tab" href="#news6">{{$sixCategory->name}}</a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
