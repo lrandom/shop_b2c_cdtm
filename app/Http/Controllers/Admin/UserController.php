@@ -65,12 +65,14 @@ class UserController extends Controller implements ICrud
         $fullName = $request->full_name;
         $phone = $request->phone;
         $password = $request->password;
+        $level = $request->level;
         try {
             User::where('id', $id)->update([
                 'email' => $email,
                 'full_name' => $fullName,
                 'phone' => $phone,
                 'name' => $email,
+                'level' => $level,
                 'password' => Hash::make($password)
             ]);
         } catch (\Exception $exception) {

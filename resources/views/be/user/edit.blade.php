@@ -30,6 +30,21 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Level</label>
+                            <select name="level" class="form-control">
+                                <option value="admin" <?php if ($user->level == 'admin') {
+                                    echo 'selected="selected"';
+                                } ?>>Admin
+                                </option>
+                                <option value="user" <?php if ($user->level == 'user') {
+                                    echo 'selected="selected"';
+                                } ?>>User
+                                </option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
                             <label>Password</label>
                             <input type="password" name="password" class="form-control" placeholder="Password">
                         </div>
