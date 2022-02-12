@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 //admin/user/add
-Route::prefix('/admin')->group(function () {
+Route::middleware('admin')->prefix('/admin')->group(function () {
     Route::prefix('/user')->group(function () {
         Route::get('/list', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.user.list');
         Route::get('/add',
@@ -54,4 +54,14 @@ Route::prefix('/admin')->group(function () {
 
 });
 
+Route::get('/admin/login',[\App\Http\Controllers\Admin\LoginController::class, 'login'])
+    ->name('admin.login');
+
+Route::post('/admin/do-login',[\App\Http\Controllers\Admin\LoginController::class, 'doLogin'])
+    ->name('admin.do-login');
+
+Route::get('/admin/logout', function () {
+    Auth::logout();
+    return redirect()->route('admin.login');
+})->name('admin.logout');
 
