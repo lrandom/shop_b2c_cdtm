@@ -36,7 +36,7 @@
                         </div>
 
                         <div>
-                            {!!$post->content !!}}
+                            {!! html_entity_decode($post->content) !!}
                         </div>
                         <a class="ad-area" href="#">
                             <img src="assets/img/ad/2.png" alt="img">
@@ -75,98 +75,36 @@
                                 <a href="#">Laptop C7</a>
                             </div>
                         </div>
-                        <div class="blog-author-area">
-                            <div class="blog-author-details media">
-                                <img src="assets/img/author/3b.png" alt="author">
-                                <div class="media-body">
-                                    <h6>Alex Martun</h6>
-                                    <p>Living a fully ethical life, game-changer overcome injustice co-creation catalyze
-                                        co-creation revolutionary white paper systems thinking hentered. Innovation
-                                        resilient deep dive shared unit of analysis, ble</p>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="recent-blog-area">
                             <div class="row">
                                 <div class="col-12">
                                     <h6>Related Posts</h6>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="single-post-wrap">
-                                        <div class="thumb">
-                                            <img src="assets/img/top-post/8.png" alt="img">
-                                            <a class="tag" href="#">Travel</a>
-                                        </div>
-                                        <h6><a href="#">30 World's Best Places to Visit USA | Newsfast Company</a></h6>
-                                        <div class="meta">
-                                            <a href="#" class="author">
-                                                <img src="assets/img/author/3.png" alt="img">
-                                                Alex Martun Blogger
-                                            </a>
-                                            <div class="date">
-                                                <i class="fa fa-clock-o"></i>
-                                                12 Jun 22
+
+                                @foreach($relativePosts as $relativePost)
+                                    <div class="col-md-6">
+                                        <div class="single-post-wrap">
+                                            <div class="thumb">
+                                                <img src="{{asset($relativePost->thumbnail_path)}}" alt="{{$relativePost->title}}">
+                                               {{-- <a class="tag" href="#">Travel</a>--}}
+                                            </div>
+                                            <h6><a href="#">{{$relativePost->title}}</a></h6>
+                                            <div class="meta">
+                                                <a href="#" class="author">
+                                                    <i class="fa fa-user"></i>
+                                                    {{$relativePost->user->full_name}}
+                                                </a>
+                                                <div class="date">
+                                                    <i class="fa fa-clock-o"></i>
+                                                    12 Jun 22
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-post-wrap">
-                                        <div class="thumb">
-                                            <img src="assets/img/top-post/9.png" alt="img">
-                                            <a class="tag" href="#">Travel</a>
-                                        </div>
-                                        <h6><a href="#">30 World's Best Places to Visit USA | Newsfast Company</a></h6>
-                                        <div class="meta">
-                                            <a href="#" class="author">
-                                                <img src="assets/img/author/3.png" alt="img">
-                                                Alex Martun Blogger
-                                            </a>
-                                            <div class="date">
-                                                <i class="fa fa-clock-o"></i>
-                                                12 Jun 22
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-post-wrap">
-                                        <div class="thumb">
-                                            <img src="assets/img/top-post/10.png" alt="img">
-                                            <a class="tag" href="#">Travel</a>
-                                        </div>
-                                        <h6><a href="#">30 World's Best Places to Visit USA | Newsfast Company</a></h6>
-                                        <div class="meta">
-                                            <a href="#" class="author">
-                                                <img src="assets/img/author/3.png" alt="img">
-                                                Alex Martun Blogger
-                                            </a>
-                                            <div class="date">
-                                                <i class="fa fa-clock-o"></i>
-                                                12 Jun 22
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single-post-wrap">
-                                        <div class="thumb">
-                                            <img src="assets/img/top-post/11.png" alt="img">
-                                            <a class="tag" href="#">Travel</a>
-                                        </div>
-                                        <h6><a href="#">30 World's Best Places to Visit USA | Newsfast Company</a></h6>
-                                        <div class="meta">
-                                            <a href="#" class="author">
-                                                <img src="assets/img/author/3.png" alt="img">
-                                                Alex Martun Blogger
-                                            </a>
-                                            <div class="date">
-                                                <i class="fa fa-clock-o"></i>
-                                                12 Jun 22
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
+
                             </div>
                         </div>
                         <div class="comment-area">
@@ -385,10 +323,8 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="media-post-wrap media">
-                                    <div class="thumb">
-                                        <img src="assets/img/post/5s.png" alt="img">
-                                    </div>
                                     <div class="media-body">
                                         <h6><a href="#">Best fashion makeup for everyday life style</a></h6>
                                         <div class="meta">
@@ -403,6 +339,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="media-post-wrap media mb-0">
                                     <div class="thumb">
                                         <img src="assets/img/post/6s.png" alt="img">
@@ -453,92 +390,31 @@
                                 <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i>Youtube 34k</a></li>
                             </ul>
                         </div>
-                        <div class="widget widget-visitor text-center">
-                            <h5>Monthly Visitor</h5>
-                            <h6>77,179744</h6>
-                            <p>Youn Become a part of the InSky as a member</p>
-                            <a class="btn btn-main" href="#">Become a Member</a>
-                        </div>
                         <div class="widget widget-list">
                             <h5 class="widget-title">Best Stories</h5>
-                            <div class="media-post-wrap media">
-                                <div class="thumb">
-                                    <img src="assets/img/widget/1.png" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <h6><a href="#">What was the first travel experience of my life like?</a></h6>
-                                    <div class="meta">
-                                        <a href="#" class="author">
-                                            By: Malika
-                                        </a>
-                                        <div class="date">
-                                            <i class="fa fa-clock-o"></i>
-                                            19 Jun 22
-                                        </div>
-                                        <div class="views">
-                                            63 Views
+                            @foreach($topStoriesNews as $topStoriesNew)
+                                <div class="media-post-wrap media">
+                                    <div class="thumb">
+                                        <img style="width:150px" src="{{asset($topStoriesNew->thumbnail_path)}}"
+                                             alt="img">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6><a href="#">{{$topStoriesNew->title}}</a></h6>
+                                        <div class="meta">
+                                            <a href="#" class="author">
+                                                By: {{$topStoriesNew->user->full_name}}
+                                            </a>
+                                            <div class="date">
+                                                <i class="fa fa-clock-o"></i>
+                                                19 Jun 22
+                                            </div>
+                                            <div class="views">
+                                                {{$topStoriesNew->view_count}} Views
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="media-post-wrap media">
-                                <div class="thumb">
-                                    <img src="assets/img/widget/2.png" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <h6><a href="#">The story of becoming a good successful freelancer from.</a></h6>
-                                    <div class="meta">
-                                        <a href="#" class="author">
-                                            By: Malika
-                                        </a>
-                                        <div class="date">
-                                            <i class="fa fa-clock-o"></i>
-                                            16 Jun 22
-                                        </div>
-                                        <div class="views">
-                                            13 Views
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media-post-wrap media">
-                                <div class="thumb">
-                                    <img src="assets/img/widget/3.png" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <h6><a href="#">Why a person has to go through a very difficult time in life</a>
-                                    </h6>
-                                    <div class="meta">
-                                        <a href="#" class="author">
-                                            By: Malika
-                                        </a>
-                                        <div class="date">
-                                            <i class="fa fa-clock-o"></i>
-                                            12 Jun 22
-                                        </div>
-                                        <div class="views">
-                                            92 Views
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="load-more-btn" href="#">Load More</a>
-                        </div>
-                        <div class="widget widget-post">
-                            <h5 class="widget-title">Top Travel Posts</h5>
-                            <div class="single-widget-post">
-                                <div class="thumb">
-                                    <img src="assets/img/widget/4.png" alt="img">
-                                </div>
-                                <h6>Travel ipsum dolor sit amet, consectetur adipiscing elit aliqua.</h6>
-                            </div>
-                            <div class="single-widget-post">
-                                <div class="thumb">
-                                    <img src="assets/img/widget/5.png" alt="img">
-                                </div>
-                                <h6>Travel ipsum dolor sit amet, consectetur adipiscing elit aliqua.</h6>
-                            </div>
-                            <a class="load-more-btn" href="#">Load More</a>
+                            @endforeach
                         </div>
                         <div class="widget widget_tags">
                             <h4 class="widget-title">Popular Tags</h4>

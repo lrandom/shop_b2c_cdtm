@@ -31,9 +31,9 @@
 </div>
 <!-- search popup area start -->
 <div class="search-popup" id="search-popup">
-    <form action="http://www.s7template.com/tf/kargill/index.html" class="search-form">
+    <form action="{{route('fe.search')}}" class="search-form">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search.....">
+            <input type="text" class="form-control" name="query" placeholder="Search.....">
         </div>
         <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
     </form>

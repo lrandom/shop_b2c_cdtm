@@ -10,4 +10,6 @@ Route::get('/category/{id}', [\App\Http\Controllers\HomeController::class, 'blog
     ->name('fe.category.detail');
 Route::get('/post-detail/{id}', [\App\Http\Controllers\HomeController::class, 'postDetail'])
     ->name('fe.post.detail');
+Route::get('/search', [\App\Http\Controllers\HomeController::class, 'search'])
+    ->name('fe.search');
 ?>

@@ -66,7 +66,7 @@ class PostController extends Controller implements ICrud
         try {
             $post = Post::create([
                 'title' => $title,
-                'content' => htmlentities($content),
+                'content' => $content,
                 'short_description' => $shortDescription,
                 'meta_keyword' => $metaKeyword,
                 'meta_description' => $metaDescription,
@@ -119,7 +119,7 @@ class PostController extends Controller implements ICrud
         try {
             $post = Post::where('id', $id)->update([
                 'title' => $title,
-                'content' => htmlentities($content),
+                'content' => $content,
                 'short_description' => $shortDescription,
                 'meta_keyword' => $metaKeyword,
                 'meta_description' => $metaDescription,

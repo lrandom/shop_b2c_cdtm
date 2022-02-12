@@ -29,9 +29,9 @@ class HomeController extends Controller
         $category = Category::find($id);
         $topStoriesNews = Post::where('type', 2)
             ->orderBy('created_at', 'desc')->limit(4)->get();
-        $posts = Post::where('category_id',$id)->orderBy('created_at','desc')->paginate(10);
+        $posts = Post::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(10);
         return view('fe.blog-list', compact('category',
-            'posts','topStoriesNews'));
+            'posts', 'topStoriesNews'));
     }
 
     public function postDetail($id)
@@ -41,7 +41,23 @@ class HomeController extends Controller
         $post->save();
         $topStoriesNews = Post::where('type', 2)
             ->orderBy('created_at', 'desc')->limit(4)->get();
-        return view('fe.detail', compact('post','topStoriesNews'));
+        $categoryId = $post->category->id;
+        $relativePosts = Post::where('category_id', $categoryId)
+            ->orderBy('created_at', 'desc')->limit(4)->get();
+        return view('fe.detail', compact('post',
+            'topStoriesNews', 'relativePosts'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->query('query');
+        $posts = Post::where('title', 'LIKE', '%' . $query . '%')
+            ->orWhere('short_description', 'LIKE', '%' . $query . '%')
+            ->orWhere('content', 'LIKE', '%' . $query . '%')
+            ->get();
+        $topStoriesNews = Post::where('type', 2)
+            ->orderBy('created_at', 'desc')->limit(4)->get();
+        return view('fe.search', compact('posts','query', 'topStoriesNews'));
     }
 
     public function contact()
