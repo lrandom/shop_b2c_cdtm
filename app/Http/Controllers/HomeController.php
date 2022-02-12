@@ -16,7 +16,7 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')->limit(4)->get();
         $recentNews = Post::orderBy('created_at', 'desc')->limit(3)->get();
         $bestStories = Post::orderBy('view_count', 'desc')->limit(3)->get();
-        $sixCategories = Category::limit(6)->get();
+        $sixCategories = Category::limit(5)->get();
         return view('fe.home', compact('fiveCategories',
             'topStoriesNews',
             'recentNews',

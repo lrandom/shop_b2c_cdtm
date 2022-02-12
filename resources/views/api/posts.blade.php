@@ -1,6 +1,6 @@
 <div id="news1" class="tab-pane fade active show">
     <div class="row">
-        <div class="col-md-6">
+ {{--       <div class="col-md-6">
             <div class="top-post-wrap top-post-wrap-4">
                 <div class="thumb">
                     <div class="overlay"></div>
@@ -67,6 +67,22 @@
                     <h6><a href="#">I think to Change our Attention Make For Valuable Face.</a></h6>
                 </div>
             </div>
-        </div>
+        </div>--}}
+
+        @foreach($posts as $post)
+            <div class="col-md-6">
+                <div class="top-post-wrap top-post-wrap-4">
+                    <div class="thumb">
+                        <div class="overlay"></div>
+                        <img src="{{asset($post->thumbnail_path)}}"
+                             alt="{{$post->title}}">
+                    </div>
+                    <div class="top-post-details">
+                        <a class="tag" href="#">{{$post->category->name}}</a>
+                        <h6><a href="#">{{$post->title}}</a></h6>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>

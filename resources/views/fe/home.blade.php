@@ -136,6 +136,7 @@
                                         @foreach($sixCategories as $sixCategory)
                                             <li>
                                                 <a class="tab-item" data-toggle="tab"
+                                                   data-id="{{$sixCategory->id}}"
                                                    href="#news6">{{$sixCategory->name}}</a>
                                             </li>
                                         @endforeach
@@ -815,14 +816,22 @@
             $('.tab-item').removeClass('active');
             $(this).addClass('active');
             $('.top-news-tab-content').empty();
+            const id = $(this).attr('data-id');
+            loadPosts(id);
+        });
+
+        function loadPosts(id) {
             $.ajax({
                 method: 'get',
                 dataType: 'html',
-                url: '{{route('api.posts.load',['id'=>1])}}',
+                url: '{{url('api/posts/')}}/' + id,
                 success: function (data) {
                     $('.top-news-tab-content').append(data);
                 }
             })
-        });
+        }
+
+        loadPosts($('.tab-item:first').attr('data-id'));
+        $('.tab-item:first').addClass('active');
     </script>
 @endsection
