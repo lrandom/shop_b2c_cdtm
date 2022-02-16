@@ -72,7 +72,7 @@ class PostController extends Controller implements ICrud
                 'meta_description' => $metaDescription,
                 'category_id' => $categoryId,
                 'type' => $type,
-                'user_id' => 1
+                'user_id' => \Auth::user()->id
             ]);
 
             //thêm ảnh

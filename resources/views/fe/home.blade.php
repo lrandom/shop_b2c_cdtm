@@ -17,10 +17,12 @@
                                 </div>
                                 <div class="top-post-details">
                                     <a class="tag" href="#">{{$fiveCategories[$i]->name}}</a>
-                                    <h6><a href="#">{{$fiveCategories[$i]->post->title}}</a></h6>
+                                    <h6>
+                                        <a href="{{route('fe.post.detail',['id'=>$fiveCategories[$i]->post->id])}}">{{$fiveCategories[$i]->post->title}}</a>
+                                    </h6>
                                     <div class="meta">
-                                        <a href="#" class="author">
-                                            Malika Hamira
+                                        <a href="" class="author">
+                                            {{$fiveCategories[$i]->post->user->full_name}}
                                         </a>
                                         <div class="date">
                                             <i class="fa fa-clock-o"></i>
@@ -43,10 +45,12 @@
                                 </div>
                                 <div class="top-post-details">
                                     <a class="tag" href="#">{{$fiveCategories[$i]->name}}</a>
-                                    <h6><a href="#">A woman can break the record in the world boxing game</a></h6>
+                                    <h6>
+                                        <a href="{{route('fe.post.detail',['id'=>$fiveCategories[$i]->post->id])}}">{{$fiveCategories[$i]->post->title}}</a>
+                                    </h6>
                                     <div class="meta">
                                         <a href="#" class="author">
-                                            Malika Hamira
+                                            {{$fiveCategories[$i]->post->user->full_name}}
                                         </a>
                                         <div class="date">
                                             <i class="fa fa-clock-o"></i>
@@ -76,7 +80,9 @@
                             <h5 class="title">Top Stories</h5>
                         </div>
                         <div class="col-sm-6 text-sm-right align-self-center">
-                            <a class="see-all-btn float-sm-right" href="#">View all</a>
+                            {{--
+                                                        <a class="see-all-btn float-sm-right" href="#">View all</a>
+                            --}}
                         </div>
                     </div>
                 </div>
@@ -84,7 +90,9 @@
                     @foreach($topStoriesNews as $topStoriesNew)
                         <div class="col-lg-3 col-md-6">
                             <div class="top-story-wrap">
-                                <h6><a href="#">{{$topStoriesNew->title}}</a></h6>
+                                <h6>
+                                    <a href="{{route('fe.post.detail',['id'=>$topStoriesNew->id])}}">{{$topStoriesNew->title}}</a>
+                                </h6>
                                 <p>11 Jun, 2020 | By {{$topStoriesNew->user->full_name}}</p>
                             </div>
                         </div>
@@ -115,7 +123,7 @@
                     <div class="section-title pb-0">
                         <div class="row">
                             <div class="col-md-4">
-                                <h5 class="title mb-0">City News</h5>
+                                <h5 class="title mb-0">Categories News</h5>
                             </div>
                             <div class="col-md-8 align-self-center text-left text-md-right">
                                 <div class="top-news-tab d-inline-block">
@@ -626,7 +634,7 @@
                                             <h5 class="title">Recent News</h5>
                                         </div>
                                         <div class="col-sm-6 text-sm-right align-self-center">
-                                            <a class="see-all-btn" href="#">View All</a>
+                                            {{--<a class="see-all-btn" href="#">View All</a>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -637,7 +645,7 @@
                                                  alt="img">
                                         </div>
                                         <div class="media-body">
-                                            <h6><a href="#">{{$recentNew->title}}</a></h6>
+                                            <h6><a href="{{route('fe.post.detail',['id'=>$recentNew->id])}}">{{$recentNew->title}}</a></h6>
                                             <div class="meta">
                                                 <a href="#" class="author">
                                                     By {{$recentNew->user->full_name}} <span>|</span>
@@ -715,7 +723,7 @@
                                              alt="img">
                                     </div>
                                     <div class="media-body">
-                                        <h6><a href="#">{{$topStoriesNew->title}}</a></h6>
+                                        <h6><a href="{{route('fe.post.detail',['id'=>$topStoriesNew->id])}}">{{$topStoriesNew->title}}</a></h6>
                                         <div class="meta">
                                             <a href="#" class="author">
                                                 By: {{$topStoriesNew->user->full_name}}

@@ -78,8 +78,8 @@
                              alt="{{$post->title}}">
                     </div>
                     <div class="top-post-details">
-                        <a class="tag" href="#">{{$post->category->name}}</a>
-                        <h6><a href="#">{{$post->title}}</a></h6>
+                        <a class="tag" href="{{route('fe.category.detail',['id'=>$post->category->id])}}">{{$post->category->name}}</a>
+                        <h6><a href="{{route('fe.post.detail',['id'=>$post->id])}}">{{$post->title}}</a></h6>
                     </div>
                 </div>
             </div>

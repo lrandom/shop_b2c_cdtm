@@ -80,7 +80,6 @@
             </div>
             <div class="nav-right-part nav-right-part-mobile">
                 <a class="search header-search" href="#"><i class="fa fa-search"></i></a>
-                <a class="btn btn-main" href="#">Subscrobe Now</a>
             </div>
             <div class="collapse navbar-collapse" id="miralax_main_menu">
                 <ul class="navbar-nav menu-open">
@@ -102,7 +101,7 @@
             </div>
             <div class="nav-right-part nav-right-part-desktop">
                 <a class="search header-search" href="#"><i class="fa fa-search"></i></a>
-                <a class="btn btn-main" href="#">Subscrobe Now</a>
+
             </div>
         </div>
     </nav>

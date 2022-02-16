@@ -86,8 +86,9 @@
                                     <div class="col-md-6">
                                         <div class="single-post-wrap">
                                             <div class="thumb">
-                                                <img src="{{asset($relativePost->thumbnail_path)}}" alt="{{$relativePost->title}}">
-                                               {{-- <a class="tag" href="#">Travel</a>--}}
+                                                <img src="{{asset($relativePost->thumbnail_path)}}"
+                                                     alt="{{$relativePost->title}}">
+                                                {{-- <a class="tag" href="#">Travel</a>--}}
                                             </div>
                                             <h6><a href="#">{{$relativePost->title}}</a></h6>
                                             <div class="meta">
@@ -142,36 +143,42 @@
                                         est Lorem ipsum dolor sit amet.</p>
                                 </div>
                             </div>
+
+
                             <form class="comment-form">
                                 <h5>Leave a Reply</h5>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="single-input-wrap single-textarea-wrap">
-                                            <textarea rows="6" placeholder="Write your message..."></textarea>
+                                @if(Auth::user())
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="single-input-wrap single-textarea-wrap">
+                                                <textarea rows="6" placeholder="Write your message..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="single-input-wrap">
+                                                <input type="text" class="form-control" placeholder="Full Name*">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="single-input-wrap">
+                                                <input type="text" class="form-control" placeholder="Email*">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="single-input-wrap">
+                                                <input type="text" class="form-control" placeholder="Phone Number">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="single-input-wrap">
-                                            <input type="text" class="form-control" placeholder="Full Name*">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="single-input-wrap">
-                                            <input type="text" class="form-control" placeholder="Email*">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="single-input-wrap">
-                                            <input type="text" class="form-control" placeholder="Phone Number">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comment-check">
-                                    <label><input type="checkbox" aria-label="Checkbox for following text input">
-                                        <span class="checkmark"></span></label>
-                                    Save my name, email, and website in this browser for the next time.
-                                </div>
-                                <button type="submit" class="btn btn-main">Submit Comment</button>
+                                    {{--   <div class="comment-check">
+                                           <label><input type="checkbox" aria-label="Checkbox for following text input">
+                                               <span class="checkmark"></span></label>
+                                           Save my name, email, and website in this browser for the next time.
+                                       </div>--}}
+                                    <button type="submit" class="btn btn-main">Submit Comment</button>
+                                @else
+                                    <a class="btn" href="{{route('f')}}">Login to comment</a>
+                                @endif
                             </form>
                         </div>
                     </div>

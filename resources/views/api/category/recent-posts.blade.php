@@ -5,7 +5,7 @@
                 <img src="{{asset($post->thumbnail_path)}}" width="100" alt="img">
             </div>
             <div class="media-body">
-                <h6><a href="#">{{$post->title}}</a>
+                <h6><a href="{{route('fe.post.detail',['id'=>$post->id])}}">{{$post->title}}</a>
                 </h6>
                 <div class="meta">
                     <div class="date">
