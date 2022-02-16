@@ -12,4 +12,6 @@ Route::get('/post-detail/{id}', [\App\Http\Controllers\HomeController::class, 'p
     ->name('fe.post.detail');
 Route::get('/search', [\App\Http\Controllers\HomeController::class, 'search'])
     ->name('fe.search');
+Route::middleware(['auth'])->post('/comment', [\App\Http\Controllers\HomeController::class, 'addComment'])
+    ->name('fe.add-comment');
 ?>

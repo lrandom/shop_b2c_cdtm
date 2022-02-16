@@ -28,7 +28,7 @@
                                     {{--   <a class="tag" href="#">Working</a>--}}
                                 </div>
                                 <div class="media-body">
-                                    <h6><a href="#">{{$post->title}}</a></h6>
+                                    <h6><a href="{{route('fe.post.detail',['id'=>$topStoriesNew->id])}}">{{$topStoriesNew->title}}</a></h6>
                                     <div class="meta">
                                         <div class="date">
                                             <i class="fa fa-clock-o"></i>

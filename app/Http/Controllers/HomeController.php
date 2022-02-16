@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
@@ -57,7 +58,18 @@ class HomeController extends Controller
             ->get();
         $topStoriesNews = Post::where('type', 2)
             ->orderBy('created_at', 'desc')->limit(4)->get();
-        return view('fe.search', compact('posts','query', 'topStoriesNews'));
+        return view('fe.search', compact('posts', 'query', 'topStoriesNews'));
+    }
+
+    public function addComment(Request $request)
+    {
+        $message = $request->message;
+        $comment = new Comment();
+        $comment->post_id = $request->post_id;
+        $comment->message = $message;
+        $comment->user_id = \Auth::user()->id;
+        $comment->save();
+        return redirect()->back();
     }
 
     public function contact()

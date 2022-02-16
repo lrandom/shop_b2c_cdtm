@@ -76,7 +76,7 @@
                 </button>
             </div>
             <div class="logo d-lg-block d-none">
-                <a class="main-logo" href="index-2.html"><img src="{{asset('fe/assets/img/logo.png')}}" alt="img"></a>
+                <a class="main-logo" href="/"><img src="{{asset('fe/assets/img/logo.png')}}" alt="img"></a>
             </div>
             <div class="nav-right-part nav-right-part-mobile">
                 <a class="search header-search" href="#"><i class="fa fa-search"></i></a>
@@ -92,7 +92,7 @@
                             $categories = Category::all();
                             ?>
                             @foreach($categories as $category)
-                                <li><a href="">{{$category->name}}</a></li>
+                                <li><a href="{{route('fe.category.detail',['id'=>$category->id])}}">{{$category->name}}</a></li>
                             @endforeach
                         </ul>
                     </li>
